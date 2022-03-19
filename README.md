@@ -1,4 +1,4 @@
-# HARJOITUS
+# HARJOITUSTYÖ
 
 **Ohjelmistotekniikan kurssilla** harjoitellaan ensiksi *versionhallintaa*. Tässä muutos tehtävää 16 varten.
 
