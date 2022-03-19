@@ -95,7 +95,7 @@ Date:   Sat Mar 19 16:12:36 2022 +0200
  1 file changed, 0 insertions(+), 0 deletions(-)
 
 commit 8e729961a8a320eabc75cec894d86fc685150768
-Author: Susanna Kinnunen <susanna.kinnunen@windowslive.com>
+Author: Susanna <susanna.kinnunen@windowslive.com>
 Date:   Sat Mar 19 16:08:02 2022 +0200
 
     muutos ja lisäys
