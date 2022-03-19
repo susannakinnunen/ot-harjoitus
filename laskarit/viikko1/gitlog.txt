@@ -1,0 +1,114 @@
+suskinnu@lx0-fuxi294:~/ot_viikko1/tiedostoja$ git log --stat | cat
+commit da2ff21a70b6cf84f9632cec023a8f6b2cde3a52
+Author: Susanna Kinnunen <susanna.kinnunen@windowslive.com>
+Date:   Sat Mar 19 18:53:44 2022 +0200
+
+    file1 poistettu ja file2 nimetty file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 612c2d072cc45efeaf5d39d7c60a28ee224b8e56
+Author: Susanna Kinnunen <susanna.kinnunen@windowslive.com>
+Date:   Sat Mar 19 18:48:36 2022 +0200
+
+    tiedostoja kansio luotu
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 9a0fb4b23dff5730794a563a90f2254ec1ce4808
+Author: Susanna Kinnunen <susanna.kinnunen@windowslive.com>
+Date:   Sat Mar 19 18:36:45 2022 +0200
+
+    uusia lisäyksiä
+
+ eka.txt    | 5 +----
+ kolmas.txt | 1 +
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+commit 164462b4e494abd5f393b4ffe569f8abeefdc4f0
+Author: Susanna Kinnunen <susanna.kinnunen@windowslive.com>
+Date:   Sat Mar 19 18:28:02 2022 +0200
+
+    tiedosto.txt nimi vaihdettu eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b9bd7274dfc21dd5e8913e95a5240d76621e2744
+Author: Susanna Kinnunen <susanna.kinnunen@windowslive.com>
+Date:   Sat Mar 19 18:25:59 2022 +0200
+
+    Poistettu toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 05e55563d3652f9e1e3d496d257ad2168a313bed
+Author: Susanna Kinnunen <susanna.kinnunen@windowslive.com>
+Date:   Sat Mar 19 18:17:27 2022 +0200
+
+    tiedosto.txt tekstiä poistettu ja lisätty
+
+ tiedosto.txt | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+commit e90924dd8a956d4aea4087210590610d8d5508ce
+Author: Susanna Kinnunen <susanna.kinnunen@windowslive.com>
+Date:   Sat Mar 19 18:11:25 2022 +0200
+
+    tiedosto.txt lisätty paljon tekstiä
+
+ tiedosto.txt | 95 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 95 insertions(+)
+
+commit 1b97bd7f048ce46db16da20a1fe403b0c4cad8b1
+Author: Susanna Kinnunen <susanna.kinnunen@windowslive.com>
+Date:   Sat Mar 19 16:15:37 2022 +0200
+
+    stuff kansio lisätty
+
+ stuff/stuffia.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 5aef125a600457f58c3e38a127b46f7e275ca4e9
+Author: Susanna Kinnunen <susanna.kinnunen@windowslive.com>
+Date:   Sat Mar 19 16:13:53 2022 +0200
+
+    toinen.txt ja kolmas.txt muokattu
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 48ba35b4ba4c57df644370967764c8c00c4abdfa
+Author: Susanna Kinnunen <susanna.kinnunen@windowslive.com>
+Date:   Sat Mar 19 16:12:36 2022 +0200
+
+    kolmas.txt luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8e729961a8a320eabc75cec894d86fc685150768
+Author: Susanna Kinnunen <susanna.kinnunen@windowslive.com>
+Date:   Sat Mar 19 16:08:02 2022 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 49861f225c4720a5bc4a581900639272a4537323
+Author: Susanna Kinnunen <susanna.kinnunen@windowslive.com>
+Date:   Sat Mar 19 16:04:41 2022 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
