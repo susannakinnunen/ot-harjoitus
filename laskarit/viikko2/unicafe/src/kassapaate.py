@@ -1,3 +1,4 @@
+
 class Kassapaate:
     def __init__(self):
         self.kassassa_rahaa = 100000
@@ -42,3 +43,6 @@ class Kassapaate:
             self.kassassa_rahaa += summa
         else:
             return
+
+    def __str__(self):
+        return f"kassassa rahaa: {self.kassassa_rahaa}, ostetut edulliset: {self.edulliset}, ostetut maukkaat: {self.maukkaat}"
