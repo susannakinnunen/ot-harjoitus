@@ -22,14 +22,14 @@ Ylläpitäjälle näkyvä sivu:
 
 ## Perusversion tarjoama toiminnallisuus
 
-* Ennen kirjautumista *
+**Ennen kirjautumista**
 - Käyttäjä voi luoda itselleen tunnuksen
 	- Käyttäjätunnus on uniikki ja sen pituus on vähintään 3 merkkiä.
 - Käyttäjä voi kirjautua sisään, jos hänellä on olemassa oleva tunnus järjestelmään
 	- Järjestelmä ilmoittaa, jos käyttäjätunnusta ei löydy tai jos salasana ei täsmää.
 	
 
-* Kirjautumisen jälkeen*
+**Kirjautumisen jälkeen**
 - Kirjautumisen jälkeen käyttäjä näkee listan kehonosista, joita klikkaamalla hän pääsee näkemään sopivat venyttelyohjeet.
 
 - Ylläpitäjä pystyy myös lisäämään, muokkaamaan ja poistamaan kehonosia ja venyttelyohjeita.
