@@ -2,7 +2,7 @@
 
 ## Sovelluksen tarkoitus
 
-Kyseessä on venyttelysovellus. Käyttäjä näkee listan kehonosista ja klikkaamalla kehonosaa saa siihen sopivia venyttelyohjeita. (Huom. aihe on muuttunut sitten viime viikon palautuksen)
+Kyseessä on venyttelysovellus. Käyttäjä näkee listan kehonosista ja klikkaamalla kehonosaa saa siihen sopivia venyttelyohjeita. (Huom. aihe on muuttunut ensimmäisen viikon palautuksen jälkeen.)
 
 ## Käyttäjät
 Normaalikäyttäjät pääsevät näkemään venyttelyohjeet.
@@ -13,8 +13,10 @@ Ylläpitäjä voi lisätä, muokata ja poistaa kehonosia ja venyttelyohjeita.
 
 Käyttöliittymä koostuu noin. 6 eri näkymästä:
 
-1. Kirjautuminen   <---Jos ei tunnusta--->  2. Tunnuksen luominen
-3. Lista kehonosista 4. Lista valitulle kehonosalle sopivia venyttelyohjeita
+1. Kirjautuminen
+2. Tunnuksen luominen
+3. Lista kehonosista 
+4. Lista valitulle kehonosalle sopivia venyttelyohjeita
 
 Ylläpitäjälle näkyvä sivu:
 5. Näkymä 3, jossa myös mahdollisuus lisätä uusi kehonosa
