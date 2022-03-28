@@ -18,9 +18,9 @@ Käyttöliittymä koostuu noin. 6 eri näkymästä:
 3. Lista kehonosista 
 4. Lista valitulle kehonosalle sopivia venyttelyohjeita
 
-Ylläpitäjälle näkyvä sivu:
-5. Näkymä 3, jossa myös mahdollisuus lisätä uusi kehonosa
-6. Näkymä 4, jossa myös mahdollisuus lisätä uusi venyttelyohje
+Ylläpitäjän näkymät:
+5. Näkymä 3, jossa myös mahdollisuus lisätä, muokata ja poistaa listan elementtejä
+6. Näkymä 4, jossa myös mahdollisuus lisätä, muokata ja poistaa venyttelyohjeita
 
 ## Perusversion tarjoama toiminnallisuus
 
