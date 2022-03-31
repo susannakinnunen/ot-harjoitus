@@ -2,7 +2,7 @@
 classDiagram
 	Pelilauta "40" -- "1" Ruutu
 	Ruutu --|> SeuraavaRuutu
-	Pelinappula "*" -- Ruutu "1"
+	Pelinappula "*" -- "1" Ruutu
 	class Pelilauta{
 	}
 	class Ruutu{
