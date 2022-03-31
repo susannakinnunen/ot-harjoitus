@@ -10,7 +10,7 @@ classDiagram
 	}
 	class SeuraavaRuutu{
 	}
-	Pelinappula{
+	class Pelinappula{
 	}
-	Pelaaja{
+	class Pelaaja{
 	}
