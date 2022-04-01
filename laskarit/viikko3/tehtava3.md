@@ -9,5 +9,5 @@ sequenceDiagram
   activate moottori
   moottori ->> Engine: start()
   Engine ->> FuelTank: consume(5)
-  moottori -->> main
+  moottori -->> main:
   deactivate moottori
