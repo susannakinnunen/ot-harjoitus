@@ -11,5 +11,4 @@ sequenceDiagram
   Engine ->> FuelTank: consume(5)
   FuelTank-->> moottori:
   deactivate moottori
-  moottori -->> main: 
 
