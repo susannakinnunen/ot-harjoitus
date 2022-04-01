@@ -8,6 +8,5 @@ sequenceDiagram
   main ->> +moottori: drive()
   moottori ->> Engine: start()
   Engine ->> FuelTank: consume(5)
-  FuelTank-->> moottori: poo
+  FuelTank-->> moottori: 
   moottori -->> -main: 
-
