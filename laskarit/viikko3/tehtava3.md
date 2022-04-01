@@ -5,7 +5,8 @@ sequenceDiagram
   participant FuelTank
   participant Engine
   moottori ->> FuelTank: fill(40)
-  main ->> +moottori: drive()
+  main ->> moottori: drive()
+  activate moottori
   moottori ->> Engine: start()
   Engine ->> FuelTank: consume(5)
   
