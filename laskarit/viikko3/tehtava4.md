@@ -11,7 +11,6 @@ sequenceDiagram
   main ->> laitehallinto: lisaa_lataaja(ratikka6)
   main ->> laitehallinto: lisaa_lataaja(bussi244)
   main ->> +lippu_luukku: osta_matkakortti("Kalle")
-  lippuluukku ->> -main: uusi_kortti
-  
+  lippuluukku -->> -main:   
   
   
