@@ -4,7 +4,7 @@ sequenceDiagram
   participant laitehallinto
   participant rautatientori
   participant ratikka6
-  participant bussi 244
+  participant bussi244
   participant lippu_luukku
   participant kallen_kortti
   main ->> laitehallinto: lisaa_lataaja(rautatietori)
