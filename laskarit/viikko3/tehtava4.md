@@ -14,3 +14,4 @@ sequenceDiagram
   lippuluukku ->> -main: uusi_kortti
   
   
+  
