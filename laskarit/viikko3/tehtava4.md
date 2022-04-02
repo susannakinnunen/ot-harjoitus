@@ -14,3 +14,10 @@ sequenceDiagram
   lippu_luukku -->> -main: uusi_kortti
   main ->> rautatientori: (kallen_kortti, 3)
   rautatientori ->> kallen_kortti: kasvata_arvoa(3)
+  main ->> +ratikka6:osta_lippu(kallen_kortti, 0)
+  ratikka6 ->> kallen_kortti: vahenna_arvoa(1,5)
+  ratikka6 ->> -main: True
+  main ->> +bussi244: osta_lippu(kallen_kortti, 2)
+  bussi244 ->> -main: False
+  
+  
