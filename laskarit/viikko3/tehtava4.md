@@ -8,5 +8,5 @@ sequenceDiagram
   main ->> laitehallinto: lisaa_lataaja(rautatietori)
   main ->> laitehallinto: lisaa_lataaja(ratikka6)
   main ->> laitehallinto: lisaa_lataaja(bussi244)
-  participant lippuluukku
+  main ->> lippu_luukku: Kioski()
   
