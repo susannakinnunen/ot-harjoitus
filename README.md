@@ -17,12 +17,10 @@ Venyttelysovelluksen tarkoituksena on olla sovellus, josta voi etsiä kehonosako
 Ohjelman pystyy suorittamaan komennolla
 ```
 poetry run invoke start
-
 ```
 **Testaus**
 
 Testikattavuusraportin voi generoida komennolla:
 ```
 poetry run invoke coverage-report
-
 ```
