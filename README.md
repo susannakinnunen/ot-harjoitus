@@ -1,21 +1,28 @@
-# HARJOITUSTYÖ
+# Venyttelysovellus
 
-**Ohjelmistotekniikan kurssilla** harjoitellaan ensiksi *versionhallintaa*. Tässä muutos tehtävää 16 varten.
+Venyttelysovelluksen tarkoituksena on olla sovellus, josta voi etsiä kehonosakohtaisia venyttelyohjeita.
 
-## Tehtävät
+## Dokumentaatio
 
-**Viikko 1**
+- [changelog](https://github.com/susannakinnunen/ot-harjoitus/blob/master/dokumentaatio/changelog.md)
 
-[gitlog.txt](https://github.com/susannakinnunen/ot-harjoitus/blob/master/laskarit/viikko1/gitlog.txt)
+- [työaikakirjanpito](https://github.com/susannakinnunen/ot-harjoitus/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 
-[komentorivi.txt](https://github.com/susannakinnunen/ot-harjoitus/blob/master/laskarit/viikko1/komentorivi.txt)
+- [vaatimusmäärittely](https://github.com/susannakinnunen/ot-harjoitus/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
-**Viikko 2**
+## Komentorivitoiminnot 
 
-[vaatimusmäärittely](https://github.com/susannakinnunen/ot-harjoitus/blob/master/dokumentaatio/vaatimusmaarittely.md)
+**Ohjelman suorittaminen**
 
-[tyoaikakirjanpito](https://github.com/susannakinnunen/ot-harjoitus/blob/master/dokumentaatio/tyoaikakirjanpito.md)
+Ohjelman pystyy suorittamaan komennolla
+```
+poetry run invoke start
 
-**Viikko 3**
+```
+**Testaus**
 
-[changelog](https://github.com/susannakinnunen/ot-harjoitus/blob/master/dokumentaatio/changelog.md)
+Testikattavuusraportin voi generoida komennolla:
+```
+poetry run invoke coverage-report
+
+```
