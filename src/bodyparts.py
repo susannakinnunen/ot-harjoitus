@@ -32,8 +32,12 @@ class Bodypart:
         self._connection = connection
 
     def add_bodypart(self, name):
+        self.name = name
+
         cursor =  self._connection.cursor()
 
         cursor.execute("INSERT INTO Bodyparts (name) VALUES (:name)",{"name":name})
 
         self._connection.commit()
+
+        return f"Lisätty kehonosa: {self.name}"
