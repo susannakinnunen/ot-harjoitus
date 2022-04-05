@@ -20,6 +20,11 @@ poetry run invoke start
 ```
 **Testaus**
 
+Testit voi suorittaa komennolla:
+```
+poetry run invoke test
+```
+
 Testikattavuusraportin voi generoida komennolla:
 ```
 poetry run invoke coverage-report
