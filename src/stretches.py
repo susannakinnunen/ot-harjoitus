@@ -31,9 +31,8 @@ def find_all():
 def get_stretch_id_by_id(bodypart_id):
     connection = database_connection.get_database_connection()
     cursor = connection.cursor()
-
-    result = cursor.execute("SELECT stretch_id FROM BodypartStretches" \
-         "WHERE bodypart_id=:bodypart_id", {"bodypart_id": bodypart_id})
+    # En osannut jakaa seuraavaa riviä, niin että koodi vielä toimisi
+    result = cursor.execute("SELECT stretch_id FROM BodypartStretches WHERE bodypart_id=:bodypart_id", {"bodypart_id": bodypart_id})
     stretch_id_result = result.fetchone()
     strech_id = stretch_id_result[0]
     return strech_id
@@ -43,8 +42,8 @@ def get_stretch_id_by_name(stretch_name):
     connection = database_connection.get_database_connection()
     cursor = connection.cursor()
 
-    result = cursor.execute("SELECT id FROM Stretches WHERE name=:name", {
-                            "name": stretch_name})
+    result = cursor.execute("SELECT id FROM Stretches WHERE name= :name", \
+    {"name": stretch_name})
     stretch_id_result = result.fetchone()
     strech_id = stretch_id_result[0]
     return strech_id

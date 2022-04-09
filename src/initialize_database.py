@@ -1,5 +1,6 @@
 from database_connection import get_database_connection
 
+
 def drop_tables(connection):
     cursor = connection.cursor()
 
@@ -27,17 +28,19 @@ def create_tables(connection):
     connection.commit()
 
     sql_bodypart_stretch = "CREATE TABLE BodypartStretches" \
-         "(id INTEGER PRIMARY KEY, bodypart_id INTEGER REFERENCES Bodyparts," \
-              "stretch_id INTEGER REFERENCES Stretches);"
+        "(id INTEGER PRIMARY KEY, bodypart_id INTEGER REFERENCES Bodyparts," \
+        "stretch_id INTEGER REFERENCES Stretches);"
     cursor.execute(sql_bodypart_stretch)
     connection.commit()
 
 
 def initialize_database_tests():
     connection = get_database_connection()
-
     drop_tables(connection)
     create_tables(connection)
 
+
 def initialize_database():
     connection = get_database_connection()
+    drop_tables(connection)
+    create_tables(connection)

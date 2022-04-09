@@ -1,5 +1,6 @@
 import database_connection
 
+
 def find_all():
     connection = database_connection.get_database_connection()
     cursor = connection.cursor()

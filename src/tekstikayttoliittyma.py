@@ -34,9 +34,7 @@ if __name__ == "__main__":
 
     S = stretches.Stretch(database_connection.get_database_connection())
     stretch_name = "Eteenpäintaivutus seisaaltaan"
-    S.add_stretch(stretch_name, "Ota hieman lantiota leveämpi haaraasento. Pidä polvet rentoina. \n"
-                  "Hengita sisään ja ulos hengityksellä lähde viemään ylävartaloa alas kohti jalkoja. Anna pään roikkua rentona. \n"
-                  "Koukista polvia niin paljon, että voit olla venytyksessä mahdollisimman rennosti.")
+    S.add_stretch(stretch_name, "Ota hieman lantiota leveämpi haaraasento. Pidä polvet rentoina.Hengita sisään ja ulos hengityksellä lähde viemään ylävartaloa alas kohti jalkoja. Anna pään roikkua rentona. Koukista polvia niin paljon, että voit olla venytyksessä mahdollisimman rennosti.")
 
     BS = bodypart_stretch.BodypartStretch(
         database_connection.get_database_connection())
