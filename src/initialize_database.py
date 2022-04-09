@@ -16,6 +16,9 @@ def drop_tables(connection):
     cursor.execute(sql_bodypart_stretches)
     connection.commit()
 
+    sql_users = "DROP TABLE IF EXISTS Users;"
+    cursor.execute(sql_users)
+    connection.commit()
 
 def create_tables(connection):
     cursor = connection.cursor()
@@ -31,6 +34,11 @@ def create_tables(connection):
         "(id INTEGER PRIMARY KEY, bodypart_id INTEGER REFERENCES Bodyparts," \
         "stretch_id INTEGER REFERENCES Stretches);"
     cursor.execute(sql_bodypart_stretch)
+    connection.commit()
+
+
+    sql_users = "CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT UNIQUE, password TEXT)"
+    cursor.execute(sql_users)
     connection.commit()
 
 

@@ -3,9 +3,27 @@ from initialize_database import initialize_database
 import bodyparts
 import stretches
 import bodypart_stretch
+import users
 
 
 def ui():
+
+    komento = ("Luo uusi käyttäjätunnus painamalla 'R', kirjaudu sisään painamalla 'K'")
+    
+    if komento == "R":
+        print("Rekisteröidy luomalla käyttäjätunnus ja salasana")
+        username = input("käyttätunnus:")
+        password = input("salasana:")
+        users.add_user(username, password)
+
+        print(username)
+    
+    if komento == "K":
+        print("Kirjaudu sisään")
+        username = ("käyttäjätunnus:")
+        password = ("salasana:")
+
+        users.check_user(username,password)
 
     while True:
 
@@ -39,4 +57,5 @@ if __name__ == "__main__":
     BS = bodypart_stretch.BodypartStretch(
         database_connection.get_database_connection())
     BS.add_combination(bodypart_name, stretch_name)
+
     ui()
