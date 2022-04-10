@@ -8,25 +8,34 @@ import users
 
 def ui():
 
-    komento = ("Luo uusi käyttäjätunnus painamalla 'R', kirjaudu sisään painamalla 'K'")
-    
-    if komento == "R":
-        print("Rekisteröidy luomalla käyttäjätunnus ja salasana")
-        username = input("käyttätunnus:")
-        password = input("salasana:")
-        users.add_user(username, password)
-
-        print(username)
-    
-    if komento == "K":
-        print("Kirjaudu sisään")
-        username = ("käyttäjätunnus:")
-        password = ("salasana:")
-
-        users.login(username,password)
-
     while True:
 
+        U = users.User()
+
+        komento = input("Luo uusi käyttäjätunnus painamalla 'R', kirjaudu sisään painamalla 'K', lopeta painamalla 'X' \n")
+    
+        if komento == "R":
+            print("Rekisteröidy luomalla käyttäjätunnus ja salasana")
+            username = input("käyttätunnus:")
+            password = input("salasana:")
+            U.add_user(username, password)
+        
+        if komento == "K":
+            print("Kirjaudu sisään")
+            username = input("käyttäjätunnus:")
+            password = input("salasana:")
+
+            login = U.login(username,password)
+
+            if login:
+                break
+            
+        
+        if komento == "X":
+            break
+    
+    while True:
+        
         komento = input(
             "Tulosta kehonosat painamalla 'A', hae venytys painamalla 'B', lopeta painamalla 'X' \n")
         if komento == "A":

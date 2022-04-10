@@ -1,36 +1,44 @@
 import database_connection
 from initialize_database import initialize_database
 
-def add_user(username, password):
-    connection = database_connection.get_database_connection()
-    cursor = connection.cursor()
+class User:
+    def __init__(self,connection):
+        self._connection = connection
 
-    cursor.execute(
-        "INSERT INTO Users (username,password) VALUES (:username, :password)", {"username": username, "password": password })
+    def add_user(self, username, password):
+        connection = database_connection.get_database_connection()
+        cursor = connection.cursor()
 
-    connection.commit()
+        cursor.execute(
+            "INSERT INTO Users (username,password) VALUES (:username, :password)", {"username": username, "password": password })
 
-def login(username, password):
-    user = find_by_username(username)
-    
-    if user == None or user[1] != password:
-        print("Väärä käyttäjätunnus tai salasana")
-    
-    else:
-        print(f"Olet kirjautunut sisään tunnuksella {username}")
+        connection.commit()
 
-def find_by_username(username):
-    connection = database_connection.get_database_connection()
-    cursor = connection.cursor()
+        return f"Lisätty käyttäjätunnus {username} ja salasana {password}"
 
-    cursor.execute("SELECT * FROM Users WHERE username=:username", {"username":username})
+    def login(self, username, password):
+        user = self.find_by_username(username)
+        
+        if user == None or user[1] != password:
+            print("Väärä käyttäjätunnus tai salasana")
+            return False
+        
+        else:
+            print(f"Olet kirjautunut sisään tunnuksella {username}")
+            return True
 
-    row = cursor.fetchone()
-    
-    if row == None:
-         return None
+    def find_by_username(self,username):
+        connection = database_connection.get_database_connection()
+        cursor = connection.cursor()
 
-    return row['username'], row['password']
+        cursor.execute("SELECT * FROM Users WHERE username=:username", {"username":username})
+
+        row = cursor.fetchone()
+        
+        if row == None:
+            return None
+
+        return row['username'], row['password']
 
 """
 if __name__ == "__main__":
