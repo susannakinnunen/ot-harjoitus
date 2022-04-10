@@ -6,13 +6,12 @@ class User:
         self._connection = connection
 
     def add_user(self, username, password):
-        connection = database_connection.get_database_connection()
-        cursor = connection.cursor()
+        cursor = self._connection.cursor()
 
         cursor.execute(
             "INSERT INTO Users (username,password) VALUES (:username, :password)", {"username": username, "password": password })
 
-        connection.commit()
+        self._connection.commit()
 
         return f"Lisätty käyttäjätunnus {username} ja salasana {password}"
 
@@ -28,8 +27,7 @@ class User:
             return True
 
     def find_by_username(self,username):
-        connection = database_connection.get_database_connection()
-        cursor = connection.cursor()
+        cursor = self._connection.cursor()
 
         cursor.execute("SELECT * FROM Users WHERE username=:username", {"username":username})
 
