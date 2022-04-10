@@ -23,7 +23,7 @@ def ui():
         username = ("käyttäjätunnus:")
         password = ("salasana:")
 
-        users.check_user(username,password)
+        users.login(username,password)
 
     while True:
 
