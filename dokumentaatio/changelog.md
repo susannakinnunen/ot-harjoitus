@@ -5,3 +5,7 @@
 - Yhteys tietokantaan mahdollinen
 - Tietokannassa taulut Bodyparts, Stretches ja BodypartStretches (viimeisimmän kautta voi yhdistää kehonosan ja venytyksen)
 
+## Viikko 4
+
+- User-luokan laatiminen ja Users-tietokantataulun alustaminen
+- Käyttäjälle on nyt alustava mahdollisuus rekiströityä, kirjautua sisään ja ulos. Kun käyttäjä kirjautuu sisään, hän pääsee näkemään kehonosat ja venyttelyt
