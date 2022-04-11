@@ -36,17 +36,16 @@ def create_tables(connection):
     cursor.execute(sql_bodypart_stretch)
     connection.commit()
 
-
     sql_users = "CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT UNIQUE, password TEXT)"
     cursor.execute(sql_users)
     connection.commit()
 
-
+"""
 def initialize_database_tests():
     connection = get_database_connection()
     drop_tables(connection)
     create_tables(connection)
-
+"""
 
 def initialize_database():
     connection = get_database_connection()
