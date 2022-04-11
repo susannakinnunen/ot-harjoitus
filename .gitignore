@@ -4,6 +4,6 @@ __pycache__
 htmlcov
 harjoittelu.db
 .env
-database.sqlite
+data.sqlite
 None
 
