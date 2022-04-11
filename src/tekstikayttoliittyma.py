@@ -1,5 +1,9 @@
 from initialize_database import initialize_database
-import database_connection, bodyparts, stretches, bodypart_stretch, users
+import database_connection
+import bodyparts
+import stretches
+import bodypart_stretch
+import users
 
 
 class Tekstikayttoliittyma:
@@ -12,56 +16,57 @@ class Tekstikayttoliittyma:
 
             U = users.User(database_connection.get_database_connection())
 
-            komento = self.io.user_input("Luo uusi käyttäjätunnus painamalla 'R', kirjaudu sisään painamalla 'K', lopeta painamalla 'X' \n")
-        
+            komento = self.io.user_input(
+                "Luo uusi käyttäjätunnus painamalla 'R', kirjaudu sisään painamalla 'K', lopeta painamalla 'X' \n")
+
             if komento == "R":
-                self.io.print_out("Rekisteröidy luomalla käyttäjätunnus ja salasana")
-                username = self.io.user_input("käyttätunnus:")
+                self.io.print_out(
+                    "Rekisteröidy luomalla käyttäjätunnus ja salasana")
+                username = self.io.user_input("käyttäjätunnus:")
                 password = self.io.user_input("salasana:")
                 U.add_user(username, password)
-            
+
             if komento == "K":
                 self.io.print_out("Kirjaudu sisään")
                 username = self.io.user_input("käyttäjätunnus:")
                 password = self.io.user_input("salasana:")
 
-                login = U.login(username,password)
+                login = U.login(username, password)
 
                 if login:
-                    break
-                
-            
+
+                    while True:
+
+                        komento = self.io.user_input(
+                            "Tulosta kehonosat painamalla 'A', hae venytys painamalla 'B', kirjaudu ulos ja poistu painamalla 'X' \n")
+                        if komento == "A":
+
+                            bodypart_list = bodyparts.find_all()
+                            for bodypart in bodypart_list:
+                                self.io.print_out(bodypart)
+
+                        if komento == "B":
+                            bodypart_name = self.io.user_input(
+                                "Kirjoita listassa annettu kehonosa:")
+                            stretch = stretches.find_stretch(bodypart_name)
+                            self.io.print_out(stretch)
+
+                        if komento == "X":
+                            break
+
             if komento == "X":
                 break
-        
-        while True:
-            
-            komento = self.io.user_input(
-                "Tulosta kehonosat painamalla 'A', hae venytys painamalla 'B', lopeta painamalla 'X' \n")
-            if komento == "A":
 
-                bodypart_list = bodyparts.find_all()
-                for bodypart in bodypart_list:
-                    self.io.print_out(bodypart)
-
-            if komento == "B":
-                bodypart_name = self.io.user_input("Kirjoita listassa annettu kehonosa:")
-                stretch = stretches.find_stretch(bodypart_name)
-                self.io.print_out(stretch)
-
-            if komento == "X":
-                break
 
 class InputOutput:
     def __init__(self):
-        self.test  =  1
+        self.test = 1
 
     def user_input(self, text):
         return input(text)
 
-    def print_out(self,text):
+    def print_out(self, text):
         return print(text)
-
 
 
 if __name__ == "__main__":
@@ -81,4 +86,3 @@ if __name__ == "__main__":
 
     T = Tekstikayttoliittyma()
     T.ui()
-    

@@ -20,6 +20,7 @@ def drop_tables(connection):
     cursor.execute(sql_users)
     connection.commit()
 
+
 def create_tables(connection):
     cursor = connection.cursor()
     sql_bodyparts = "CREATE TABLE Bodyparts (id INTEGER PRIMARY KEY, name TEXT);"
@@ -40,12 +41,7 @@ def create_tables(connection):
     cursor.execute(sql_users)
     connection.commit()
 
-"""
-def initialize_database_tests():
-    connection = get_database_connection()
-    drop_tables(connection)
-    create_tables(connection)
-"""
+
 
 def initialize_database():
     connection = get_database_connection()
