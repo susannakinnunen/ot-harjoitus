@@ -1,6 +1,11 @@
 ```mermaid
 classDiagram
-  ui --> User
+  ui --> UserService
+  ui --> StretchService
+  UserServie --> User
+  StretchService --> Bodypart
+  StretchService --> Stretches
+  StretchService --> BodypartStretches
   User --> Bodypart
   User --> BodypartStretch
   User --> Stretch
