@@ -6,7 +6,7 @@ classDiagram
   User --> Stretch
   BodypartStretch --> Bodypart
   BodypartStretch --> Stretch
-  Bodypart ..> Stretch
+  Bodypart <-- Stretch
   class User{
     username
     password
