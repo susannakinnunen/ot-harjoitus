@@ -4,4 +4,4 @@ classDiagram
   User --> Bodypart
   BodypartStretch --> Bodypart
   BodypartStretch --> Stretch
-  Bodypart -> Stretch
+  Bodypart --> Stretch
