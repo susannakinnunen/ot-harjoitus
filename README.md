@@ -10,7 +10,7 @@ Venyttelysovelluksen tarkoituksena on olla sovellus, josta voi etsiä kehonosako
 
 - [vaatimusmäärittely](https://github.com/susannakinnunen/ot-harjoitus/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
--[arkkitehtuuri.md](https://github.com/susannakinnunen/ot-harjoitus/blob/master/dokumentaatio/arkkitehtuuri.md)
+- [arkkitehtuuri.md](https://github.com/susannakinnunen/ot-harjoitus/blob/master/dokumentaatio/arkkitehtuuri.md)
 
 ## Komentorivitoiminnot 
 
