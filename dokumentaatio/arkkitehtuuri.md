@@ -1,3 +1,7 @@
 ```mermaid
 classDiagram
-ui --> User
+  ui --> User
+  User --> Bodypart
+  BodypartStretch --> Bodypart
+  BodypartStretch --> Stretch
+  Bodypart -->> Stretch
