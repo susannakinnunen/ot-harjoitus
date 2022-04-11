@@ -4,8 +4,8 @@ classDiagram
   ui --> StretchService
   UserServie --> User
   StretchService --> Bodypart
-  StretchService --> Stretche
-  StretchService --> BodypartStretche
+  StretchService --> Stretch
+  StretchService --> BodypartStretch
   User --> Bodypart
   User --> BodypartStretch
   User --> Stretch
