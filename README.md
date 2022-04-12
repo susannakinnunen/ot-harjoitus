@@ -37,3 +37,9 @@ Pylint-laatutarkastuksen tulokset saa näkyviin komennolla:
 ```
 poetry run invoke lint
 ```
+**Automaattinen formatointi**
+
+PEP 8 -tyyliohjeiden mukainen automaattinen formatointi toimii komennolla:
+```
+poetry run invoke format
+```
