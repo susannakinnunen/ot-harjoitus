@@ -1,14 +1,14 @@
 ```mermaid
 classDiagram
   ui -- UserService
-  ui --> StretchService
-  UserService --> User
-  StretchService --> Bodypart
-  StretchService --> Stretch
-  StretchService --> BodypartStretch
-  User --> Bodypart
-  User --> BodypartStretch
-  User --> Stretch
+  ui -- StretchService
+  UserService -- User
+  StretchService -- Bodypart
+  StretchService -- Stretch
+  StretchService -- BodypartStretch
+  User .. Bodypart
+  User .. BodypartStretch
+  User .. Stretch
   BodypartStretch --> Bodypart
   BodypartStretch --> Stretch
   Bodypart <-- Stretch
