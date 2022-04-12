@@ -1,6 +1,6 @@
 ```mermaid
 classDiagram
-  ui --> UserService
+  ui -- UserService
   ui --> StretchService
   UserService --> User
   StretchService --> Bodypart
