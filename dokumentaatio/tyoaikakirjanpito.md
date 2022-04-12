@@ -7,5 +7,6 @@
 | 5.4.	| 9    | Tietokantayhteyden muodostaminen, moduulien, luokkien ja funktioiden laatiminen |	
 | 9.4. 	| 4,5  | Tietokantatoimintojen selvitystä, alustava rekisteröitymis- ja kirjautumismahdollisuus
 | 10.4. | 2,5  | User-luokan rakentamista ja sille testien laatimista
+| 11.4. | 4,5  | debuggausta, sovelluslogiikan ja käyttöliittymän erottelun hahmottelua ja parantelua, user-luokan käyttöönoton parantelua
 
-Yht.21h
+Yht.25,5h
