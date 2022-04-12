@@ -9,9 +9,9 @@ classDiagram
   User .. Bodypart
   User .. BodypartStretch
   User .. Stretch
-  BodypartStretch --> Bodypart
-  BodypartStretch --> Stretch
-  Bodypart <-- Stretch
+  BodypartStretch -- Bodypart
+  BodypartStretch -- Stretch
+  Bodypart -- Stretch
   class User{
     username
     password
