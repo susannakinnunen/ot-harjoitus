@@ -8,4 +8,4 @@
 ## Viikko 4
 
 - User-luokan laatiminen ja Users-tietokantataulun alustaminen
-- Käyttäjälle on nyt alustava mahdollisuus rekiströityä, kirjautua sisään ja ulos. Kun käyttäjä kirjautuu sisään, hän pääsee näkemään kehonosat ja venyttelyt
+- Käyttäjällä on nyt alustava mahdollisuus rekisteröityä, kirjautua sisään ja ulos. Kun käyttäjä kirjautuu sisään, hän pääsee näkemään kehonosat ja venyttelyt.
