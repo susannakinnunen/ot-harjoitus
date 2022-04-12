@@ -31,3 +31,9 @@ Testikattavuusraportin voi generoida komennolla:
 ```
 poetry run invoke coverage-report
 ```
+**Pylint**
+
+Pylint-laatutarkastuksen tulokset saa näkyviin komennolla:
+```
+poetry run invoke lint
+```
