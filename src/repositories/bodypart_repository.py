@@ -11,7 +11,6 @@ class BodypartRepository:
         try:
             check = self.check_if_exists(name)
             if check:
-                print("puu")
                 return "exists"
             else: 
                 cursor.execute(

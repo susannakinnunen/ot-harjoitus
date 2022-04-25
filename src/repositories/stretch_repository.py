@@ -31,8 +31,6 @@ class StretchRepository():
 
             with open(stretch_file, "a") as file:
                 file.write(name+","+description+"\n")
-            
-            print("pruut")
 
             return f"{name} ja {description}"
         except:
