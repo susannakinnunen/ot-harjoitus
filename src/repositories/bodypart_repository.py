@@ -1,5 +1,6 @@
 from entities.bodypart import Bodypart
 from database_connection import get_database_connection
+from config import bodypart_file
 
 class BodypartRepository:
     def __init__(self):
@@ -8,15 +9,31 @@ class BodypartRepository:
     def add_bodypart(self, name):
         cursor = self.connection.cursor()
         try:
-            cursor.execute(
-                "INSERT INTO Bodyparts (name) VALUES (:name)", {"name": name})
+            check = self.check_if_exists(name)
+            if check:
+                print("puu")
+                return "exists"
+            else: 
+                cursor.execute(
+                    "INSERT INTO Bodyparts (name) VALUES (:name)", {"name": name})
 
-            self.connection.commit()
+                self.connection.commit()
 
-            return f"Lisätty kehonosa: {name}"
-        
+                return f"Lisätty kehonosa: {name}"
+            
         except:
-            return
+            return False
+
+    def check_if_exists(self,name):
+        cursor = self.connection.cursor()
+
+        sql = cursor.execute("SELECT name FROM Bodyparts WHERE name=:name", {"name": name})
+        result = sql.fetchone()
+        if result is None:
+            return False
+        else:
+            return True
+
 
     def find_all(self):
         cursor = self.connection.cursor()
@@ -26,7 +43,6 @@ class BodypartRepository:
         rows = cursor.fetchall()
 
         list = [row["name"] for row in rows]
-
         for bodypart in list:
             bodypart_object = Bodypart(bodypart)
             if bodypart_object not in list:
@@ -36,14 +52,43 @@ class BodypartRepository:
         return list
     
     def get_bodyparts_from_file(self):
-        with open("bodyparts.csv") as file:
+        bodypart_list = []
+        with open(bodypart_file) as file:
             for row in file:
                 row = row.replace("\n", "")
                 bodypart = row.split(",")
                 bodypart = bodypart[0]
-                self.add_bodypart(bodypart)
+                bodypart_list.append(bodypart)
+        return bodypart_list
+
+    def add_stretchnames_to_bodyparts_file(self,bodypart_name,stretch_name):
+        with open(bodypart_file, "w") as file:
+            for row in file:
+                row = row.replace("\n", "")
+                bodypart_stretch_row = row.split(",")
+                bodypart = bodypart_stretch_row[0]
+                if bodypart == bodypart_name:
+                    file.writerow(row+stretch_name+"\n")
 
 
+    def write_bodyparts_to_file_and_database(self, bodypart, stretch):
+        try:
+            check = self.add_bodypart(bodypart)
+            if check != "exists":
+                with open(bodypart_file, "a") as file:
+                    file.write(bodypart+","+stretch+"\n")
+
+                return f"Lisätty kehonosa ja venytys: {bodypart} ja {stretch}"
+            else: 
+                self.add_stretchnames_to_bodyparts_file(bodypart,stretch)
+                
+
+        except:
+            return False
+
+
+
+            
     def get_bodypart_id(self,name):
         cursor = self.connection.cursor()
         result = cursor.execute(

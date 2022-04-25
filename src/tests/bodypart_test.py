@@ -12,3 +12,9 @@ class TestBodyparts(unittest.TestCase):
         vastaus = self.bodypart_repository.add_bodypart("niska")
 
         self.assertEqual(vastaus, "Lisätty kehonosa: niska")
+
+    
+    def test_write_bodyparts_to_file_and_database(self):
+        vastaus = self.bodypart_repository.write_bodyparts_to_file_and_database("ranne","Ranteen venytys")
+
+        self.assertEqual(vastaus, "Lisätty kehonosa ja venytys: ranne ja Ranteen venytys")

@@ -1,6 +1,7 @@
 from database_connection import get_database_connection
 from repositories.bodypart_repository import BodypartRepository
 from repositories.stretch_repository import StretchRepository
+from config import bodypart_file, stretch_file
 
 class BodypartStretchRepository():
     def __init__(self):
@@ -9,16 +10,17 @@ class BodypartStretchRepository():
         self.stretch_repository = StretchRepository()
 
     def get_bodyparts_and_stretches_from_file(self):
-        with open("bodyparts.csv") as file:
+        with open(bodypart_file) as file:
             for row in file:
                 row = row.replace("\n", "")
                 list = row.split(",")
                 bodypart = list[0]
-                for stretch in list:
-                    if stretch == list[0]:
+                for item in list:
+                    if item == bodypart:
                         continue
+                    stretch = item
                     self.add_combination(bodypart,stretch)
-
+        return f"{bodypart} ja {stretch}"
 
     def add_combination(self, bodypart_name, stretch_name):
 
@@ -32,4 +34,3 @@ class BodypartStretchRepository():
                        {"stretch_id": stretch_id, "bodypart_id": bodypart_id})
 
         self.connection.commit()
-

@@ -1,5 +1,6 @@
 from database_connection import get_database_connection
 from repositories.bodypart_repository import BodypartRepository
+from config import stretch_file
 
 class StretchRepository():
     def __init__(self):
@@ -7,7 +8,7 @@ class StretchRepository():
         self.bodypart_repository = BodypartRepository()
 
     def get_stretches_from_file(self):
-        with open("stretches.csv") as file:
+        with open(stretch_file) as file:
             for row in file:
                 row = row.replace("\n", "")
                 row = row.split(",")
@@ -24,7 +25,20 @@ class StretchRepository():
         
         self.connection.commit()
 
-    
+    def write_stretches_to_file_and_database(self, name, description):
+        try:
+            self.add_stretch(name,description)
+
+            with open(stretch_file, "a") as file:
+                file.write(name+","+description+"\n")
+            
+            print("pruut")
+
+            return f"{name} ja {description}"
+        except:
+            return False
+
+
     def find_all(self):
         cursor = self.connection.cursor()
 

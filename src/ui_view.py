@@ -1,18 +1,25 @@
+from unicodedata import name
 from services.stretching_services import StretchingService
 from initialize_database import initialize_database
 
+#commands
 first_view = "Luo uusi käyttäjätunnus painamalla 'R', kirjaudu sisään painamalla 'K', lopeta painamalla 'X' \n"
 R = "Rekisteröidy luomalla käyttäjätunnus ja salasana"
 käyttäjätunnus = "käyttäjätunnus:"
 salasana = "salasana:"
 K = "Kirjaudu sisään"
 second_view = "Tulosta kehonosat painamalla 'A', kirjaudu ulos ja poistu painamalla 'X' \n"
-third_view = "Hae venytys painamalla 'B', kirjaudu ulos ja poistu painamalla 'X' \n"
+third_view = "Tulosta kehonosat painamalla 'A', hae venytys painamalla 'B', lisää venytys painamalla 'V', kirjaudu ulos ja poistu painamalla 'X' \n"
 bodypart_query = "Kirjoita listassa annettu kehonosa:"
+new_stretch = "Lisää venytyksen nimi:"
+new_description = "Lisää venytysohjeet:"
+bodypart_match = "Lisää kehonosa, johon venytys kohdentuu (syötä kaikki kirjaimet pienillä kirjaimilla) (Paina X poistuaksesi):"
 registering_succesful = "Käyttäjätunnus luotu."
 error = "Tapahtui virhe, kirjoita uudelleen."
 error_username = "Tapahtui virhe, valitse uusi käyttäjänimi"
 error_login = "Väärä käyttäjätunnus tai salasana"
+stretchname = "venytyksen nimi"
+instuctions = "ohjeet"
 
 
 class UI:
@@ -52,20 +59,52 @@ class UI:
                     while True:
 
                         komento = self.io.user_input(second_view)
+                        
+                        if komento == "V":
+                            stretch = self.io.user_input(new_stretch)
+                            description = self.io.user_input(new_description)
+                            self.stretch_view.add_stretch(stretch, description)
+
+                            while True:
+                                matching_bodypart = self.io.user_input(bodypart_match)
+                                if matching_bodypart == "X":
+                                    break
+                                self.bodypart_view.add_bodypart(matching_bodypart,stretch)
+
                         if komento == "A":
 
                             bodypart_list = self.bodypart_view.show_bodyparts()
                             for bodypart in bodypart_list:
                                 self.io.print_out(bodypart)
+                         
 
                             while True:
                                 
                                 komento = self.io.user_input(third_view)  
+
+                                if komento == "A":
+                                    bodypart_list = self.bodypart_view.show_bodyparts()
+                                    for bodypart in bodypart_list:
+                                        self.io.print_out(bodypart)
+
                                 if komento == "B":
                                     bodypart_name = self.io.user_input(bodypart_query)
                                     stretch = self.stretch_view.show_stretch(bodypart_name)
-                                    self.io.print_out(stretch)
-                                
+                                    for s in stretch:
+                                        self.io.print_out(f"{stretchname}:{s[0]}")
+                                        self.io.print_out(f"{instuctions}:{s[1]}")
+
+                                if komento == "V":
+                                    stretch = self.io.user_input(new_stretch)
+                                    description = self.io.user_input(new_description)
+                                    self.stretch_view.add_stretch(stretch, description)
+
+                                    while True:
+                                        matching_bodypart = self.io.user_input(bodypart_match)
+                                        if matching_bodypart == "X":
+                                            break
+                                        self.bodypart_view.add_bodypart(matching_bodypart,stretch)                                    
+                                        
                                 if komento == "X":
                                     break
 
@@ -81,6 +120,10 @@ class BodypartView:
 
     def initialize_bodyparts(self):
         self.stretching_service.initialize_bodypart_table()
+
+    def add_bodypart(self,name,stretch):
+        self.stretching_service.add_bodypart(name,stretch)
+        self.stretching_service.add_combination(name,stretch)
 
     def show_bodyparts(self):
         bodyparts = self.stretching_service.get_all_bodyparts()
@@ -100,6 +143,10 @@ class StretchView:
         if stretch == False:
             return error
         return stretch
+
+    def add_stretch(self,stretch,description):
+        self.streching_service.add_stretch(stretch,description)
+
 
 class UserView:
     def __init__(self):

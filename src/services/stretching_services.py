@@ -1,4 +1,3 @@
-from dnaio import FastaFormatError
 from repositories.bodypart_repository import BodypartRepository
 from repositories.stretch_repository import StretchRepository
 from repositories.bodypart_stretch_repository import BodypartStretchRepository
@@ -11,15 +10,22 @@ class StretchingService:
         self.bodypart_stretch_repository = BodypartStretchRepository()
         self.user_repository = UserRepository()
 
-    def add_bodypart(self,name):
-        return self.bodypart_repository.add_bodypart(name)
+    def add_bodypart(self,name,stretch):
+        self.bodypart_repository.write_bodyparts_to_file_and_database(name,stretch)
+
+    def add_stretch(self,name,description):
+        self.stretch_repository.write_stretches_to_file_and_database(name,description)
+    
+    def add_combination(self,name,stretch):
+        self.bodypart_stretch_repository.add_combination(name,stretch)
 
     def get_all_bodyparts(self):
-        self.bodypart_repository.get_bodyparts_from_file()
         return self.bodypart_repository.find_all()
 
     def initialize_bodypart_table(self):
-        self.bodypart_repository.get_bodyparts_from_file()
+        bodypart_list = self.bodypart_repository.get_bodyparts_from_file()
+        for bodypart in bodypart_list:
+            self.bodypart_repository.add_bodypart(bodypart)
     
     def initialize_stretch_table(self):
         self.stretch_repository.get_stretches_from_file()

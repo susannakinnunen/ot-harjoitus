@@ -7,3 +7,4 @@ harjoittelu.db
 data.sqlite
 None
 tasks.py.save
+.env.test
