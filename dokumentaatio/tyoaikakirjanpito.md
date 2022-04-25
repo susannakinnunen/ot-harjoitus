@@ -8,5 +8,10 @@
 | 9.4. 	| 4,5  | Tietokantatoimintojen selvitystä, alustava rekisteröitymis- ja kirjautumismahdollisuus
 | 10.4. | 2,5  | User-luokan rakentamista ja sille testien laatimista
 | 11.4. | 4,5  | debuggausta, sovelluslogiikan ja käyttöliittymän erottelun hahmottelua ja parantelua, user-luokan käyttöönoton parantelua
+| 22.4. | 5,5  | services- ja repositorio-hakemistojen integrointia koodiin
+| 23.4. | 5    | csv-tiedostojen käsittelemisen opettelua, luokka ja olio-ohjelmointia, repositorioiden hahmottelua, uusien metodien laatimista
+| 24.4. | 4    | käyttäjään liittyvät luokat ja metodit uudessa rakenteessa, jossa repositoriot ja service-hakemistot
+| 25.4. | 7,5  | csv-tiedostojen ja tietokannan yhdistämistä, debuggausta, uusien funktioiden lisäämistä, testailua
 
-Yht.25,5h
+
+Yht.47,5h
