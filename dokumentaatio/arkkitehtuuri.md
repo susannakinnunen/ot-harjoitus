@@ -1,31 +1,21 @@
 ```mermaid
 classDiagram
-  ui -- UserService
-  ui -- StretchService
-  UserService -- User
-  StretchService -- Bodypart
-  StretchService -- Stretch
-  StretchService -- BodypartStretch
-  User .. Bodypart
-  User .. BodypartStretch
-  User .. Stretch
-  BodypartStretch -- Bodypart
-  BodypartStretch -- Stretch
-  Bodypart -- Stretch
-  class User{
-    username
-    password
-  }
-  class Bodypart{
-    add_bodypart
-    find_all
-   }
-   class Stretch{
-    add_stretch
-    find_stretch
-   }
-   class BodypartStretch{
-   add_combination(bodypart, stretch)
-   }
-    
-    
+  UI -- StretchingService
+  StretchingService -- Repositories
+```
+
+
+```mermaid
+sequenceDiagram
+actor User
+User ->> UI: A
+UI ->> BodypartView: show_bodyparts()
+BodypartView ->> StretchingService: get_all_bodyparts()
+StretchingService ->> BodypartRepositories: find_all()
+BodypartRepositories -->> StretchingService: lista
+StretchingService -->> BodypartView: lista
+BodypartView -->> UI: lista
+UI -->> User: kehonosat yksitellen listasta
+```
+
+
