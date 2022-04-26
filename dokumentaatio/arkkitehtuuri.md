@@ -1,9 +1,14 @@
+#Luokkakaavio
+
 ```mermaid
 classDiagram
   UI -- StretchingService
   StretchingService -- Repositories
 ```
 
+#Sekvenssikaavio
+
+Sekvenssikaavio näyttää kuinka käyttäjä saa listan kehonosista.
 
 ```mermaid
 sequenceDiagram
