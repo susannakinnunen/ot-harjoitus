@@ -4,6 +4,7 @@ from repositories.bodypart_repository import BodypartRepository
 from repositories.stretch_repository import StretchRepository
 from initialize_database import initialize_database
 
+
 class TestBodypartStretch(unittest.TestCase):
     def setUp(self):
         self.bodypart_stretch_repository = BodypartStretchRepository()
@@ -14,9 +15,7 @@ class TestBodypartStretch(unittest.TestCase):
         initialize_database
 
     def test_get_bodyparts_and_stretches_from_file(self):
-        self.bodypart_repository.write_bodyparts_to_file_and_database("ranne","Ranteen venytys")
+        self.bodypart_repository.write_bodyparts_to_file_and_database(
+            "ranne", "Ranteen venytys")
         vastaus = self.bodypart_stretch_repository.get_bodyparts_and_stretches_from_file()
         self.assertEqual(vastaus, "ranne ja Ranteen venytys")
-
-
-

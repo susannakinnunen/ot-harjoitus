@@ -1,5 +1,6 @@
 from database_connection import get_database_connection
 
+
 class UserRepository:
     def __init__(self):
         self._connection = get_database_connection()
@@ -9,7 +10,8 @@ class UserRepository:
 
         try:
             cursor.execute(
-                "INSERT INTO Users (username,password) VALUES (:username, :password)", {"username": username, "password": password})
+                "INSERT INTO Users (username,password) VALUES (:username, :password)", {
+                    "username": username, "password": password})
 
             self._connection.commit()
 

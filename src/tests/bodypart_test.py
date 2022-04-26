@@ -16,14 +16,16 @@ class TestBodyparts(unittest.TestCase):
 
         self.assertEqual(vastaus, "Lisätty kehonosa: niska")
 
-    
     def test_write_bodyparts_to_file_and_database(self):
-        vastaus = self.bodypart_repository.write_bodyparts_to_file_and_database("ranne","Ranteen venytys")
+        vastaus = self.bodypart_repository.write_bodyparts_to_file_and_database(
+            "ranne", "Ranteen venytys")
 
-        self.assertEqual(vastaus, "Lisätty kehonosa ja venytys: ranne ja Ranteen venytys")
+        self.assertEqual(
+            vastaus, "Lisätty kehonosa ja venytys: ranne ja Ranteen venytys")
 
     def test_get_bodyparts_from_file(self):
-        self.bodypart_repository.write_bodyparts_to_file_and_database("ranne","Ranteen venytys")
+        self.bodypart_repository.write_bodyparts_to_file_and_database(
+            "ranne", "Ranteen venytys")
         vastaus = self.bodypart_repository.get_bodyparts_from_file()
 
         self.assertEqual(vastaus, ["ranne"])
@@ -33,4 +35,4 @@ class TestBodyparts(unittest.TestCase):
 
         vastaus = self.bodypart_repository.find_all()
 
-        self.assertEqual(vastaus, ["niska"] )
+        self.assertEqual(vastaus, ["niska"])

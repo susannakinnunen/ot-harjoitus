@@ -3,7 +3,7 @@ from services.stretching_services import StretchingService
 from initialize_database import initialize_database
 from initialize_csv import InitializeCSV
 
-#commands
+# commands
 first_view = "Luo uusi käyttäjätunnus painamalla 'R', kirjaudu sisään painamalla 'K', lopeta painamalla 'X' \n"
 R = "Rekisteröidy luomalla käyttäjätunnus ja salasana"
 käyttäjätunnus = "käyttäjätunnus:"
@@ -32,17 +32,18 @@ initial_stretch_intstructions = "Ota hieman lantiota leveämpi haaraasento. Pid�
 class UI:
     def __init__(self):
         initialize_database()
-        InitializeCSV(initial_bodypart,initial_stretch,initial_stretch_intstructions)
+        InitializeCSV(initial_bodypart, initial_stretch,
+                      initial_stretch_intstructions)
         self.io = InputOutput()
         self.bodypart_view = BodypartView()
         self.stretch_view = StretchView()
         self.user_view = UserView()
-        #self.bodypart_view.initialize_bodyparts()
+        # self.bodypart_view.initialize_bodyparts()
         self.stretch_view.initialize_stretches()
         self.start_tekstikayttoliittyma()
 
     def start_tekstikayttoliittyma(self):
-        
+
         while True:
 
             komento = self.io.user_input(first_view)
@@ -50,45 +51,47 @@ class UI:
             if komento == "R":
                 username = self.io.user_input(käyttäjätunnus)
                 password = self.io.user_input(salasana)
-                create = self.user_view.create_new_user(username,password)
+                create = self.user_view.create_new_user(username, password)
                 self.io.print_out(create)
-                
+
             if komento == "K":
                 self.io.print_out(K)
                 username = self.io.user_input(käyttäjätunnus)
                 password = self.io.user_input(salasana)
-                login = self.user_view.login(username,password)
-                
+                login = self.user_view.login(username, password)
+
                 if not login:
-                   self.io.print_out(error_login) 
-                
+                    self.io.print_out(error_login)
+
                 else:
-                    self.io.print_out(f"Olet kirjautunut sisään tunnuksella {username}")
+                    self.io.print_out(
+                        f"Olet kirjautunut sisään tunnuksella {username}")
                     while True:
 
                         komento = self.io.user_input(second_view)
-                        
+
                         if komento == "V":
                             stretch = self.io.user_input(new_stretch)
                             description = self.io.user_input(new_description)
                             self.stretch_view.add_stretch(stretch, description)
 
                             while True:
-                                matching_bodypart = self.io.user_input(bodypart_match)
+                                matching_bodypart = self.io.user_input(
+                                    bodypart_match)
                                 if matching_bodypart == "X":
                                     break
-                                self.bodypart_view.add_bodypart(matching_bodypart,stretch)
+                                self.bodypart_view.add_bodypart(
+                                    matching_bodypart, stretch)
 
                         if komento == "A":
 
                             bodypart_list = self.bodypart_view.show_bodyparts()
                             for bodypart in bodypart_list:
                                 self.io.print_out(bodypart)
-                         
 
                             while True:
-                                
-                                komento = self.io.user_input(third_view)  
+
+                                komento = self.io.user_input(third_view)
 
                                 if komento == "A":
                                     bodypart_list = self.bodypart_view.show_bodyparts()
@@ -96,59 +99,73 @@ class UI:
                                         self.io.print_out(bodypart)
 
                                 if komento == "B":
-                                    bodypart_name = self.io.user_input(bodypart_query)
-                                    
+                                    bodypart_name = self.io.user_input(
+                                        bodypart_query)
+
                                     if bodypart_name == "A":
                                         bodypart_list = self.bodypart_view.show_bodyparts()
                                         for bodypart in bodypart_list:
                                             self.io.print_out(bodypart)
-                                        bodypart_name = self.io.user_input(bodypart_query_second)
+                                        bodypart_name = self.io.user_input(
+                                            bodypart_query_second)
                                         if bodypart_name == "X":
                                             break
-                                        stretch = self.stretch_view.show_stretch(bodypart_name)
+                                        stretch = self.stretch_view.show_stretch(
+                                            bodypart_name)
                                         for s in stretch:
                                             try:
-                                                self.io.print_out(f"{stretchname}:{s[0]}")
-                                                self.io.print_out(f"{instuctions}:{s[1]}")
+                                                self.io.print_out(
+                                                    f"{stretchname}:{s[0]}")
+                                                self.io.print_out(
+                                                    f"{instuctions}:{s[1]}")
                                             except:
-                                                komento = self.io.user_input(error_and_exit)
+                                                komento = self.io.user_input(
+                                                    error_and_exit)
                                                 if komento == "X":
                                                     break
 
                                     if bodypart_name == "X":
                                         break
-                                    
-                                    stretch = self.stretch_view.show_stretch(bodypart_name)
+
+                                    stretch = self.stretch_view.show_stretch(
+                                        bodypart_name)
                                     for s in stretch:
                                         try:
-                                            self.io.print_out(f"{stretchname}:{s[0]}")
-                                            self.io.print_out(f"{instuctions}:{s[1]}")
+                                            self.io.print_out(
+                                                f"{stretchname}:{s[0]}")
+                                            self.io.print_out(
+                                                f"{instuctions}:{s[1]}")
                                         except:
-                                            komento = self.io.user_input(error_and_exit)
+                                            komento = self.io.user_input(
+                                                error_and_exit)
                                             if komento == "X":
                                                 break
 
-
                                 if komento == "V":
                                     stretch = self.io.user_input(new_stretch)
-                                    description = self.io.user_input(new_description)
-                                    self.stretch_view.add_stretch(stretch, description)
+                                    description = self.io.user_input(
+                                        new_description)
+                                    self.stretch_view.add_stretch(
+                                        stretch, description)
 
                                     while True:
-                                        matching_bodypart = self.io.user_input(bodypart_match)
+                                        matching_bodypart = self.io.user_input(
+                                            bodypart_match)
                                         if matching_bodypart == "X":
                                             break
-                                        self.bodypart_view.add_bodypart(matching_bodypart,stretch)                                    
-                                        
+                                        self.bodypart_view.add_bodypart(
+                                            matching_bodypart, stretch)
+
                                 if komento == "X":
                                     break
 
                         if komento == "X":
                             break
-            
+
             if komento == "X":
                 break
-        
+
+
 class BodypartView:
     def __init__(self):
         self.stretching_service = StretchingService()
@@ -156,62 +173,62 @@ class BodypartView:
     def initialize_bodyparts(self):
         self.stretching_service.initialize_bodypart_table()
 
-    def add_bodypart(self,name,stretch):
-        self.stretching_service.add_bodypart(name,stretch)
-        self.stretching_service.add_combination(name,stretch)
+    def add_bodypart(self, name, stretch):
+        self.stretching_service.add_bodypart(name, stretch)
+        self.stretching_service.add_combination(name, stretch)
 
     def show_bodyparts(self):
         bodyparts = self.stretching_service.get_all_bodyparts()
         return bodyparts
+
 
 class StretchView:
     def __init__(self):
         self.streching_service = StretchingService()
 
     def initialize_stretches(self):
-        #self.streching_service.initialize_stretch_table()
+        # self.streching_service.initialize_stretch_table()
         self.streching_service.combine_stretches_and_bodyparts()
 
-
-    def show_stretch(self,bodypart):
+    def show_stretch(self, bodypart):
         stretch = self.streching_service.show_stretch(bodypart)
         if stretch == False:
             return error
         return stretch
 
-    def add_stretch(self,stretch,description):
-        self.streching_service.add_stretch(stretch,description)
+    def add_stretch(self, stretch, description):
+        self.streching_service.add_stretch(stretch, description)
 
 
 class UserView:
     def __init__(self):
         self.stretching_service = StretchingService()
 
-    def create_new_user(self,username,password):
-        user = self.stretching_service.create_new_user(username,password)
+    def create_new_user(self, username, password):
+        user = self.stretching_service.create_new_user(username, password)
         if not user:
             return error_username
         else:
             return registering_succesful
 
-    def login(self,username,password):
-        user = self.stretching_service.login(username,password)
+    def login(self, username, password):
+        user = self.stretching_service.login(username, password)
         if not user:
             return False
         else:
             return True
 
+
 class InputOutput:
     def __init__(self):
         self.test = 1
 
-    def user_input(self,text):
+    def user_input(self, text):
         return input(text)
 
     def print_out(self, text):
-        return print(text)      
+        return print(text)
 
 
 if __name__ == "__main__":
     UI()
-    

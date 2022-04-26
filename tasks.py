@@ -2,7 +2,7 @@ from invoke import task
 
 @task
 def start(ctx):
-	ctx.run("python3 src/tekstikayttoliittyma.py", pty=True)
+	ctx.run("python3 src/ui_view.py", pty=True)
 
 @task
 def test(ctx):
