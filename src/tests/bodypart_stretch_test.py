@@ -9,6 +9,8 @@ class TestBodypartStretch(unittest.TestCase):
         self.bodypart_stretch_repository = BodypartStretchRepository()
         self.bodypart_repository = BodypartRepository()
         self.stretch_repository = StretchRepository()
+        self.bodypart_repository.delete_all()
+        self.stretch_repository.delete_all()
         initialize_database
 
     def test_get_bodyparts_and_stretches_from_file(self):
