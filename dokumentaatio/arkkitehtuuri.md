@@ -2,7 +2,7 @@
 classDiagram
   UI -- StretchingService
   StretchingService -- Repositories
-
+```
 
 
 ```mermaid
