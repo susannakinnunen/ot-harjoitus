@@ -8,13 +8,17 @@ class StretchRepository():
         self.bodypart_repository = BodypartRepository()
 
     def get_stretches_from_file(self):
+        stretch_list = []
         with open(stretch_file) as file:
             for row in file:
                 row = row.replace("\n", "")
-                row = row.split(",")
+                row = row.split(";")
                 stretch_name = row[0]
                 stretch_description = row[1]
+                stretch_list.append(stretch_name)
+                stretch_list.append(stretch_description)
                 self.add_stretch(stretch_name,stretch_description)
+        return stretch_list
     
     def add_stretch(self, name, description):
         cursor = self.connection.cursor()
@@ -30,7 +34,7 @@ class StretchRepository():
             self.add_stretch(name,description)
 
             with open(stretch_file, "a") as file:
-                file.write(name+","+description+"\n")
+                file.write(name+";"+description+"\n")
 
             return f"{name} ja {description}"
         except:
@@ -86,3 +90,7 @@ class StretchRepository():
 
         strech_id = stretch_id_result[0]
         return strech_id
+
+    def delete_all(self):
+        with open(stretch_file, "w") as file:
+            pass

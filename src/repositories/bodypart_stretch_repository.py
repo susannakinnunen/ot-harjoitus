@@ -13,7 +13,7 @@ class BodypartStretchRepository():
         with open(bodypart_file) as file:
             for row in file:
                 row = row.replace("\n", "")
-                list = row.split(",")
+                list = row.split(";")
                 bodypart = list[0]
                 for item in list:
                     if item == bodypart:

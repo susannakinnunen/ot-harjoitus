@@ -46,7 +46,7 @@ class BodypartRepository:
             bodypart_object = Bodypart(bodypart)
             if bodypart_object not in list:
                 list.remove(bodypart)
-                list.append(bodypart_object)
+                list.append(str(bodypart_object))
         
         return list
     
@@ -55,7 +55,7 @@ class BodypartRepository:
         with open(bodypart_file) as file:
             for row in file:
                 row = row.replace("\n", "")
-                bodypart = row.split(",")
+                bodypart = row.split(";")
                 bodypart = bodypart[0]
                 bodypart_list.append(bodypart)
         return bodypart_list
@@ -64,7 +64,7 @@ class BodypartRepository:
         with open(bodypart_file, "w") as file:
             for row in file:
                 row = row.replace("\n", "")
-                bodypart_stretch_row = row.split(",")
+                bodypart_stretch_row = row.split(";")
                 bodypart = bodypart_stretch_row[0]
                 if bodypart == bodypart_name:
                     file.writerow(row+stretch_name+"\n")
@@ -75,7 +75,7 @@ class BodypartRepository:
             check = self.add_bodypart(bodypart)
             if check != "exists":
                 with open(bodypart_file, "a") as file:
-                    file.write(bodypart+","+stretch+"\n")
+                    file.write(bodypart+";"+stretch+"\n")
 
                 return f"Lisätty kehonosa ja venytys: {bodypart} ja {stretch}"
             else: 
@@ -87,7 +87,6 @@ class BodypartRepository:
 
 
 
-            
     def get_bodypart_id(self,name):
         cursor = self.connection.cursor()
         result = cursor.execute(
@@ -99,3 +98,9 @@ class BodypartRepository:
         bodypart_id = bodypart_id_result[0]
 
         return bodypart_id
+
+    
+    def delete_all(self):
+        with open(bodypart_file, "w") as file:
+            pass
+        

@@ -1,6 +1,7 @@
 from unicodedata import name
 from services.stretching_services import StretchingService
 from initialize_database import initialize_database
+from initialize_csv import InitializeCSV
 
 #commands
 first_view = "Luo uusi käyttäjätunnus painamalla 'R', kirjaudu sisään painamalla 'K', lopeta painamalla 'X' \n"
@@ -10,26 +11,33 @@ salasana = "salasana:"
 K = "Kirjaudu sisään"
 second_view = "Tulosta kehonosat painamalla 'A', kirjaudu ulos ja poistu painamalla 'X' \n"
 third_view = "Tulosta kehonosat painamalla 'A', hae venytys painamalla 'B', lisää venytys painamalla 'V', kirjaudu ulos ja poistu painamalla 'X' \n"
-bodypart_query = "Kirjoita listassa annettu kehonosa:"
-new_stretch = "Lisää venytyksen nimi:"
+bodypart_query = "Kirjoita tulostetussa listassa annettu kehonosa (tulosta lista painamalla A, poistu painamalla X):"
+bodypart_query_second = "Kirjoita tulostetussa listassa annettu kehonosa (poistu painamalla X):"
+new_stretch = "Lisää venytyksen nimi (kirjoita pienillä kirjaimilla):"
 new_description = "Lisää venytysohjeet:"
-bodypart_match = "Lisää kehonosa, johon venytys kohdentuu (syötä kaikki kirjaimet pienillä kirjaimilla) (Paina X poistuaksesi):"
+bodypart_match = "Lisää kehonosa, johon venytys kohdentuu (kirjoita pienillä kirjaimilla) (Paina X poistuaksesi):"
 registering_succesful = "Käyttäjätunnus luotu."
 error = "Tapahtui virhe, kirjoita uudelleen."
+error_and_exit = "Tapahtui virhe, poistu painamalla X"
 error_username = "Tapahtui virhe, valitse uusi käyttäjänimi"
 error_login = "Väärä käyttäjätunnus tai salasana"
 stretchname = "venytyksen nimi"
 instuctions = "ohjeet"
 
+initial_bodypart = "takareisi"
+initial_stretch = "eteenpäintaivutus"
+initial_stretch_intstructions = "Ota hieman lantiota leveämpi haaraasento. Pidä polvet rentoina.Hengitä sisään ja ulos hengityksellä lähde viemään ylävartaloa alas kohti jalkoja. Anna pään roikkua rentona. Koukista polvia niin paljon, että voit olla venytyksessä mahdollisimman rennosti."
+
 
 class UI:
     def __init__(self):
         initialize_database()
+        InitializeCSV(initial_bodypart,initial_stretch,initial_stretch_intstructions)
         self.io = InputOutput()
         self.bodypart_view = BodypartView()
         self.stretch_view = StretchView()
         self.user_view = UserView()
-        self.bodypart_view.initialize_bodyparts()
+        #self.bodypart_view.initialize_bodyparts()
         self.stretch_view.initialize_stretches()
         self.start_tekstikayttoliittyma()
 
@@ -89,10 +97,37 @@ class UI:
 
                                 if komento == "B":
                                     bodypart_name = self.io.user_input(bodypart_query)
+                                    
+                                    if bodypart_name == "A":
+                                        bodypart_list = self.bodypart_view.show_bodyparts()
+                                        for bodypart in bodypart_list:
+                                            self.io.print_out(bodypart)
+                                        bodypart_name = self.io.user_input(bodypart_query_second)
+                                        if bodypart_name == "X":
+                                            break
+                                        stretch = self.stretch_view.show_stretch(bodypart_name)
+                                        for s in stretch:
+                                            try:
+                                                self.io.print_out(f"{stretchname}:{s[0]}")
+                                                self.io.print_out(f"{instuctions}:{s[1]}")
+                                            except:
+                                                komento = self.io.user_input(error_and_exit)
+                                                if komento == "X":
+                                                    break
+
+                                    if bodypart_name == "X":
+                                        break
+                                    
                                     stretch = self.stretch_view.show_stretch(bodypart_name)
                                     for s in stretch:
-                                        self.io.print_out(f"{stretchname}:{s[0]}")
-                                        self.io.print_out(f"{instuctions}:{s[1]}")
+                                        try:
+                                            self.io.print_out(f"{stretchname}:{s[0]}")
+                                            self.io.print_out(f"{instuctions}:{s[1]}")
+                                        except:
+                                            komento = self.io.user_input(error_and_exit)
+                                            if komento == "X":
+                                                break
+
 
                                 if komento == "V":
                                     stretch = self.io.user_input(new_stretch)
@@ -134,7 +169,7 @@ class StretchView:
         self.streching_service = StretchingService()
 
     def initialize_stretches(self):
-        self.streching_service.initialize_stretch_table()
+        #self.streching_service.initialize_stretch_table()
         self.streching_service.combine_stretches_and_bodyparts()
 
 
