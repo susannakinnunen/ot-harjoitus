@@ -5,6 +5,7 @@ from initialize_database import initialize_database
 class Stretch(unittest.TestCase):
     def setUp(self):
         self.stretch_repository = StretchRepository()
+        self.stretch_repository.delete_all()
         initialize_database
 
     def test_write_stretches_to_file_and_database(self):
