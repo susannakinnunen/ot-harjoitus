@@ -1,4 +1,4 @@
-#Luokkakaavio
+## Luokkakaavio
 
 ```mermaid
 classDiagram
@@ -6,7 +6,7 @@ classDiagram
   StretchingService -- Repositories
 ```
 
-#Sekvenssikaavio
+## Sekvenssikaavio
 
 Sekvenssikaavio näyttää kuinka käyttäjä saa listan kehonosista.
 
