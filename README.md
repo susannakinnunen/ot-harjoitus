@@ -24,7 +24,7 @@ stretch_file = stretches.csv
 
 .csv-tiedostoissa ei tarvitse olla mitään ennen ohjelman aloittamista. Jos niissä on jotakin, niin se ei kuitenkaan haittaa, sillä ohjelma tyhjentää tiedostot ennen tekstikäyttöliittymän käynnistymistä.
 
-Ohjelman pystyy suorittamaan komennolla
+Ohjelman pystyy suorittamaan komennolla:
 ```
 poetry run invoke start
 ```
