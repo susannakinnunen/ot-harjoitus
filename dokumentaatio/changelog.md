@@ -9,3 +9,8 @@
 
 - User-luokan laatiminen ja Users-tietokantataulun alustaminen
 - Käyttäjällä on nyt alustava mahdollisuus rekisteröityä, kirjautua sisään ja ulos. Kun käyttäjä kirjautuu sisään, hän pääsee näkemään kehonosat ja venyttelyt.
+
+##Viikko 5
+
+- Repositorioiden ja Service -moduulien ja -luokkien laatiminen
+- ohjelmaan voi nyt myös lisätä venytysohjeita
