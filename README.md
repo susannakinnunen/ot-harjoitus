@@ -12,9 +12,17 @@ Venyttelysovelluksen tarkoituksena on olla sovellus, josta voi etsiä kehonosako
 
 - [arkkitehtuuri.md](https://github.com/susannakinnunen/ot-harjoitus/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+- [release](https://github.com/susannakinnunen/ot-harjoitus/releases)
+
 ## Komentorivitoiminnot 
 
 **Ohjelman suorittaminen**
+
+Sovelluksen suorituksessa tarvitaan bodyparts.csv- ja stretches.csv tiedostot. Niille tulee tehdä ympäristönmuuttujat .src/.env-tiedostoon:
+bodypart_file = bodyparts.csv
+stretch_file = stretches.csv
+
+.csv-tiedostoissa ei tarvitse olla mitään ennen ohjelman aloittamista. Jos niissä on jotakin, niin se ei kuitenkaan haittaa, sillä ohjelma tyhjentää tiedostot ennen tekstikäyttöliittymän käynnistymistä.
 
 Ohjelman pystyy suorittamaan komennolla
 ```
