@@ -1,6 +1,7 @@
 # Venyttelysovellus
 
 Venyttelysovelluksen tarkoituksena on olla sovellus, josta voi etsiä kehonosakohtaisia venyttelyohjeita.
+Käyttäjän tulee ensin rekisteröityä ja kirjautua sisään, ennen kuin pääsee näkemään venyttelyohjeita.
 
 ## Dokumentaatio
 
@@ -23,6 +24,8 @@ bodypart_file = bodyparts.csv
 stretch_file = stretches.csv
 
 .csv-tiedostoissa ei tarvitse olla mitään ennen ohjelman aloittamista. Jos niissä on jotakin, niin se ei kuitenkaan haittaa, sillä ohjelma tyhjentää tiedostot ennen tekstikäyttöliittymän käynnistymistä.
+
+Tällä hetkellä (26.4.) käyttäjän täytyy joka kerta rekisteröityä uudestaan eli samalla käyttäjätunnuksella ei voi kirjautua sisään, kun käynnistää ohjelman uudelleen.
 
 Ohjelman pystyy suorittamaan komennolla:
 ```
