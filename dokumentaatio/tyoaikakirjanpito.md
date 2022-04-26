@@ -12,6 +12,7 @@
 | 23.4. | 5    | csv-tiedostojen käsittelemisen opettelua, luokka ja olio-ohjelmointia, repositorioiden hahmottelua, uusien metodien laatimista
 | 24.4. | 4    | käyttäjään liittyvät luokat ja metodit uudessa rakenteessa, jossa repositoriot ja service-hakemistot
 | 25.4. | 7,5  | csv-tiedostojen ja tietokannan yhdistämistä, debuggausta, uusien funktioiden lisäämistä, testailua
+| 26.4. | 5    | csv-tiedostojen alustamismoduuli tekeminen, debuggausta, testien lisäämistä
 
 
-Yht.47,5h
+Yht.52,5h
