@@ -15,5 +15,7 @@ StretchingService ->> BodypartRepositories: find_all()
 BodypartRepositories -->> StretchingService: lista
 StretchingService -->> BodypartView: lista
 BodypartView -->> UI: lista
+UI -->> User: kehonosat yksitellen listasta
+```
 
 
