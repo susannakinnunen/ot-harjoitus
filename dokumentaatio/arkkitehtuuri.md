@@ -8,5 +8,6 @@ classDiagram
 ```mermaid
 sequenceDiagram
 actor User
+User ->> UI: A
 
 
