@@ -19,13 +19,9 @@ Käyttäjän tulee ensin rekisteröityä ja kirjautua sisään, ennen kuin pää
 
 **Ohjelman suorittaminen**
 
-Sovelluksen suorituksessa tarvitaan bodyparts.csv- ja stretches.csv tiedostot. Niille tulee tehdä ympäristönmuuttujat .src/.env-tiedostoon:
-bodypart_file = bodyparts.csv
-stretch_file = stretches.csv
+Tällä hetkellä (26.4.) käyttäjän täytyy joka kerta rekisteröityä uudestaan eli samalla käyttäjätunnuksella ei voi kirjautua sisään, kun käynnistää ohjelman uudelleen.
 
 .csv-tiedostoissa ei tarvitse olla mitään ennen ohjelman aloittamista. Jos niissä on jotakin, niin se ei kuitenkaan haittaa, sillä ohjelma tyhjentää tiedostot ennen tekstikäyttöliittymän käynnistymistä.
-
-Tällä hetkellä (26.4.) käyttäjän täytyy joka kerta rekisteröityä uudestaan eli samalla käyttäjätunnuksella ei voi kirjautua sisään, kun käynnistää ohjelman uudelleen.
 
 Ohjelman pystyy suorittamaan komennolla:
 ```
