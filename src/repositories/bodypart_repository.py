@@ -15,7 +15,7 @@ class BodypartRepository:
         cursor = self.connection.cursor()
         try:
             check = self.check_if_exists(name)
-            if check:
+            if check is False:
                 return "exists"
 
             cursor.execute(
@@ -64,7 +64,7 @@ class BodypartRepository:
                 bodypart_list.append(bodypart)
         return bodypart_list
 
-    def add_stretchnames_to_bodyparts_file(self, bodypart_name, stretch_name):
+    def _add_stretchnames_to_bodyparts_file(self, bodypart_name, stretch_name):
         with open(bodypart_file, "w", encoding='utf-8') as file:
             for row in file:
                 row = row.replace("\n", "")
@@ -72,6 +72,8 @@ class BodypartRepository:
                 bodypart = bodypart_stretch_row[0]
                 if bodypart == bodypart_name:
                     file.writerow(row+stretch_name+"\n")
+
+            return f"Lisätty {bodypart_name} ja {stretch_name}"
 
     def write_bodyparts_to_file_and_database(self, bodypart, stretch):
         try:
@@ -81,7 +83,7 @@ class BodypartRepository:
                     file.write(bodypart+";"+stretch+"\n")
 
                 return f"Lisätty kehonosa ja venytys: {bodypart} ja {stretch}"
-            self.add_stretchnames_to_bodyparts_file(bodypart, stretch)
+            self._add_stretchnames_to_bodyparts_file(bodypart, stretch)
 
         except:  # pylint: disable=bare-except
             return False

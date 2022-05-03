@@ -9,16 +9,14 @@ class UserRepository:
         cursor = self._connection.cursor()
 
         if admin == True:
-            try:
-                cursor.execute(
-                    "INSERT INTO Users (username,password, is_admin) VALUES (:username, :password, True)", {
-                        "username": username, "password": password})
 
-                self._connection.commit()
+            cursor.execute(
+                "INSERT INTO Users (username,password, is_admin) VALUES (:username, :password, True)", {
+                    "username": username, "password": password})
 
-                return True
-            except:
-                return False
+            self._connection.commit()
+
+            return f"Lisätty käyttäjätunnus {username} ja salasana {password}"
         
         try:
             cursor.execute(
@@ -31,9 +29,6 @@ class UserRepository:
         except:
             return False
     
-    def check_if_admin(username):
-        if username == "admin":
-            return True
 
     def login(self, username, password):
         user = self.find_by_username(username)

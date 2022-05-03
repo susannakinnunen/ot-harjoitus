@@ -36,3 +36,5 @@ class BodypartStretchRepository():
                        {"stretch_id": stretch_id, "bodypart_id": bodypart_id})
 
         self.connection.commit()
+
+        return f"Lisätty {bodypart_name} ja {stretch_name}"

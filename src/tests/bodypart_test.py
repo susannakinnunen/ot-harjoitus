@@ -1,6 +1,7 @@
 from html import entities
 import unittest
 from repositories.bodypart_repository import BodypartRepository
+from repositories.stretch_repository import StretchRepository
 from initialize_database import initialize_database
 from entities.bodypart import Bodypart
 
@@ -8,9 +9,11 @@ from entities.bodypart import Bodypart
 class TestBodyparts(unittest.TestCase):
     def setUp(self):
         self.bodypart_repository = BodypartRepository()
+        self.stretch_repository = StretchRepository()
+        self.stretch_repository.delete_all()
         self.bodypart_repository.delete_all()
         initialize_database()
-
+    
     def test_add_bodypart(self):
         vastaus = self.bodypart_repository.add_bodypart("niska")
 
@@ -36,3 +39,4 @@ class TestBodyparts(unittest.TestCase):
         vastaus = self.bodypart_repository.find_all()
 
         self.assertEqual(vastaus, ["niska"])
+

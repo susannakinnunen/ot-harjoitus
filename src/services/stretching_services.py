@@ -12,15 +12,16 @@ class StretchingService:
         self.user_repository = UserRepository()
 
     def add_bodypart(self, name, stretch):
-        self.bodypart_repository.write_bodyparts_to_file_and_database(
+        return self.bodypart_repository.write_bodyparts_to_file_and_database(
             name, stretch)
 
-    def add_stretch(self, name, description):
-        self.stretch_repository.write_stretches_to_file_and_database(
-            name, description)
+
+    def add_stretch(self, bodypart_name, description):
+        return self.stretch_repository.write_stretches_to_file_and_database(
+            bodypart_name, description)
 
     def add_combination(self, name, stretch):
-        self.bodypart_stretch_repository.add_combination(name, stretch)
+        return self.bodypart_stretch_repository.add_combination(name, stretch)
 
     def get_all_bodyparts(self):
         return self.bodypart_repository.find_all()
@@ -56,5 +57,7 @@ class StretchingService:
         return login
 
     def check_if_admin(self,username):
-        admin = self.user_repository.check_if_admin()
-        return admin
+        if username == "admin":
+            return True
+        else:
+            return False
