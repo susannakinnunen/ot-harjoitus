@@ -20,7 +20,9 @@ Käyttäjän tulee ensin rekisteröityä ja kirjautua sisään, ennen kuin pää
 
 **Ohjelman suorittaminen**
 
-Tällä hetkellä (26.4.) käyttäjän täytyy joka kerta rekisteröityä uudestaan eli samalla käyttäjätunnuksella ei voi kirjautua sisään, kun käynnistää ohjelman uudelleen.
+Toistaiseksi käyttäjän täytyy joka kerta rekisteröityä uudestaan eli samalla käyttäjätunnuksella ei voi kirjautua sisään, kun käynnistää ohjelman uudelleen.
+
+Jos haluat koittaa ylläpitäjän oikeuksia, luo uusi käyttäjätunnus nimellä 'admin' ja kirjaudu sillä sisään. 
 
 .csv-tiedostoissa ei tarvitse olla mitään ennen ohjelman aloittamista. Jos niissä on jotakin, niin se ei kuitenkaan haittaa, sillä ohjelma tyhjentää tiedostot ennen tekstikäyttöliittymän käynnistymistä.
 
