@@ -5,12 +5,24 @@ class UserRepository:
     def __init__(self):
         self._connection = get_database_connection()
 
-    def add_user(self, username, password):
+    def add_user(self, username, password, admin):
         cursor = self._connection.cursor()
 
+        if admin == True:
+            try:
+                cursor.execute(
+                    "INSERT INTO Users (username,password, is_admin) VALUES (:username, :password, True)", {
+                        "username": username, "password": password})
+
+                self._connection.commit()
+
+                return True
+            except:
+                return False
+        
         try:
             cursor.execute(
-                "INSERT INTO Users (username,password) VALUES (:username, :password)", {
+                "INSERT INTO Users (username,password, is_admin) VALUES (:username, :password, False)", {
                     "username": username, "password": password})
 
             self._connection.commit()
@@ -18,6 +30,10 @@ class UserRepository:
             return f"Lisätty käyttäjätunnus {username} ja salasana {password}"
         except:
             return False
+    
+    def check_if_admin(username):
+        if username == "admin":
+            return True
 
     def login(self, username, password):
         user = self.find_by_username(username)

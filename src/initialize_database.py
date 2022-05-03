@@ -37,7 +37,7 @@ def create_tables(connection):
     cursor.execute(sql_bodypart_stretch)
     connection.commit()
 
-    sql_users = "CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT UNIQUE, password TEXT)"
+    sql_users = "CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT UNIQUE, password TEXT, is_admin BOOLEAN)"
     cursor.execute(sql_users)
     connection.commit()
 
