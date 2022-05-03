@@ -25,10 +25,10 @@ Ylläpitäjän näkymät:
 ## Perusversion tarjoama toiminnallisuus
 
 **Ennen kirjautumista**
-- Käyttäjä voi luoda itselleen tunnuksen
-	- Käyttäjätunnus on uniikki ja sen pituus on vähintään 3 merkkiä.
-- Käyttäjä voi kirjautua sisään, jos hänellä on olemassa oleva tunnus järjestelmään
-	- Järjestelmä ilmoittaa, jos käyttäjätunnusta ei löydy tai jos salasana ei täsmää.
+- Käyttäjä voi luoda itselleen tunnuksen **tehty**
+	- Käyttäjätunnus on uniikki ja sen pituus on vähintään 3 merkkiä. **tehty**
+- Käyttäjä voi kirjautua sisään, jos hänellä on olemassa oleva tunnus järjestelmään **tehty**
+	- Järjestelmä ilmoittaa, jos käyttäjätunnusta ei löydy tai jos salasana ei täsmää. **tehty**
 	
 
 **Kirjautumisen jälkeen**
