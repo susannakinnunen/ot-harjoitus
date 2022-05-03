@@ -32,9 +32,14 @@ Ylläpitäjän näkymät:
 	
 
 **Kirjautumisen jälkeen**
-- Kirjautumisen jälkeen käyttäjä näkee listan kehonosista, joita klikkaamalla hän pääsee näkemään sopivat venyttelyohjeet.
+- Kirjautumisen jälkeen käyttäjä näkee halutessaan listan kehonosista **tehty**
+	-  kirjoittamalla listassa annetun kehonosan, käyttäjä pääsee näkemään siihen sopivan venyttelyohjeen **tehty**
+	- kehonosia klikkaamalla hän pääsee näkemään sopivat venyttelyohjeet.
 
-- Ylläpitäjä pystyy myös lisäämään, muokkaamaan ja poistamaan kehonosia ja venyttelyohjeita.
+- Ylläpitäjä pystyy myös:
+	-  lisäämään **tehty**
+	-  muokkaamaan 
+	-  poistamaan kehonosia ja venyttelyohjeita.
 
 
 ## Jatkokehitysideoita
