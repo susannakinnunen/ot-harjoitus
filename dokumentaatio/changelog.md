@@ -14,3 +14,7 @@
 
 - Repositorioiden ja Service -moduulien ja -luokkien laatiminen
 - ohjelmaan voi nyt myös lisätä venytysohjeita
+
+## Viikko 6
+
+- ylläpitäjän ja normikäyttäjän erottelu
