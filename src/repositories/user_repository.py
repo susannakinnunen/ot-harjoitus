@@ -2,6 +2,8 @@ from database_connection import get_database_connection
 
 
 class UserRepository:
+    """ Käyttäjiin liittyvistä operaatioista vastaava luokka.
+    """
     def __init__(self):
         self._connection = get_database_connection()
 

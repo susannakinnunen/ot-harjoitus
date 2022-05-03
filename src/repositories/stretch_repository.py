@@ -8,6 +8,8 @@ from config import stretch_file
 
 
 class StretchRepository():
+    """ Venytysten tallentamisesta ja muokkaamisesta vastaava luokka.
+    """    
     def __init__(self):
         self.connection = get_database_connection()
         self.bodypart_repository = BodypartRepository()

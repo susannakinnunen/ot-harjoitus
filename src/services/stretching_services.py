@@ -5,6 +5,9 @@ from repositories.user_repository import UserRepository
 
 
 class StretchingService:
+    """ Sovelluslogiikasta vastaava luokka
+    """
+
     def __init__(self):
         self.bodypart_repository = BodypartRepository()
         self.stretch_repository = StretchRepository()

@@ -8,6 +8,9 @@ from config import bodypart_file
 
 
 class BodypartRepository:
+    """Kehonosiin iittyvistä tietokantaoperaatioista ja csv-tiedosto-operaatioista vastaava luokka.
+    """
+
     def __init__(self):
         self.connection = get_database_connection()
 
