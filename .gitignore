@@ -9,3 +9,5 @@ tasks.py.save
 .env.test
 test_stretches.csv
 test_bodypart.csv
+bodyparts.csv
+stretches.csv
