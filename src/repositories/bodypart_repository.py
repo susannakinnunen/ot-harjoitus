@@ -18,7 +18,7 @@ class BodypartRepository:
         cursor = self.connection.cursor()
         try:
             check = self.check_if_exists(name)
-            if check is False:
+            if check is True:
                 return "exists"
 
             cursor.execute(
@@ -84,9 +84,11 @@ class BodypartRepository:
             if check != "exists":
                 with open(bodypart_file, "a", encoding='utf-8') as file:
                     file.write(bodypart+";"+stretch+"\n")
-
                 return f"Lisätty kehonosa ja venytys: {bodypart} ja {stretch}"
+            
             self._add_stretchnames_to_bodyparts_file(bodypart, stretch)
+            
+            return f"Lisätty kehonosa ja venytys: {bodypart} ja {stretch}"
 
         except:  # pylint: disable=bare-except
             return False

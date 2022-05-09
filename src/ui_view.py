@@ -43,6 +43,7 @@ class UI:
         self.stretch_view = StretchView()
         self.user_view = UserView()
 
+        self.bodypart_view.initialize_bodyparts()
         self.stretch_view.initialize_stretches()
         self.start_tekstikayttoliittyma()
 
