@@ -13,7 +13,7 @@ class TestBodyparts(unittest.TestCase):
         self.stretch_repository.delete_all()
         self.bodypart_repository.delete_all()
         initialize_database()
-    
+
     def test_add_bodypart(self):
         vastaus = self.bodypart_repository.add_bodypart("niska")
 
@@ -39,4 +39,3 @@ class TestBodyparts(unittest.TestCase):
         vastaus = self.bodypart_repository.find_all()
 
         self.assertEqual(vastaus, ["niska"])
-

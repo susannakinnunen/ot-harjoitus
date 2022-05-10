@@ -85,9 +85,9 @@ class BodypartRepository:
                 with open(bodypart_file, "a", encoding='utf-8') as file:
                     file.write(bodypart+";"+stretch+"\n")
                 return f"Lisätty kehonosa ja venytys: {bodypart} ja {stretch}"
-            
+
             self._add_stretchnames_to_bodyparts_file(bodypart, stretch)
-            
+
             return f"Lisätty kehonosa ja venytys: {bodypart} ja {stretch}"
 
         except:  # pylint: disable=bare-except

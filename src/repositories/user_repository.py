@@ -4,6 +4,7 @@ from database_connection import get_database_connection
 class UserRepository:
     """ Käyttäjiin liittyvistä operaatioista vastaava luokka.
     """
+
     def __init__(self):
         self._connection = get_database_connection()
 
@@ -19,7 +20,7 @@ class UserRepository:
             self._connection.commit()
 
             return f"Lisätty käyttäjätunnus {username} ja salasana {password}"
-        
+
         try:
             cursor.execute(
                 "INSERT INTO Users (username,password, is_admin) VALUES (:username, :password, False)", {
@@ -30,7 +31,6 @@ class UserRepository:
             return f"Lisätty käyttäjätunnus {username} ja salasana {password}"
         except:
             return False
-    
 
     def login(self, username, password):
         user = self.find_by_username(username)

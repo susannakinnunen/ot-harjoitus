@@ -7,6 +7,7 @@ from config import bodypart_file
 class BodypartStretchRepository():
     """ Kehonosien ja venytysten yhdistelemiseen liittyvistä operaatioista vastaava luokka.
     """
+
     def __init__(self):
         self.connection = get_database_connection()
         self.bodypart_repository = BodypartRepository()

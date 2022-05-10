@@ -18,7 +18,6 @@ class StretchingService:
         return self.bodypart_repository.write_bodyparts_to_file_and_database(
             name, stretch)
 
-
     def add_stretch(self, bodypart_name, description):
         return self.stretch_repository.write_stretches_to_file_and_database(
             bodypart_name, description)
@@ -59,7 +58,7 @@ class StretchingService:
         login = self.user_repository.login(username, password)
         return login
 
-    def check_if_admin(self,username):
+    def check_if_admin(self, username):
         if username == "admin":
             return True
         else:
