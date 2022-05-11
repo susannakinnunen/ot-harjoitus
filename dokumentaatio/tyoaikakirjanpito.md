@@ -17,4 +17,4 @@
                   kanssa,testikattavuus jäi matalaksi)
 | 9.5.  | 5    |  TkInterin opiskelua ja graafisen käyttöliittymän käyttöönottoa
 | 10.5. | 6    | Graafisen käyttöliittymän käyttöönottoa
-Yht.60,5h
+Yht.71,5h
