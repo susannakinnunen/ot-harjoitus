@@ -13,8 +13,8 @@
 | 24.4. | 4    | käyttäjään liittyvät luokat ja metodit uudessa rakenteessa, jossa repositoriot ja service-hakemistot
 | 25.4. | 7,5  | csv-tiedostojen ja tietokannan yhdistämistä, debuggausta, uusien funktioiden lisäämistä, testailua
 | 26.4. | 5    | csv-tiedostojen alustamismoduuli tekeminen, debuggausta, testien lisäämistä
-| 3.5   | 8    | "käyttäjätunnus vähintään 3 merkkiä" -ilmoitus, ylläpitäjän ja normikäyttäjän erottaminen, testien tekeminen (jäin jumiin muutaman testin 
-                  kanssa,testikattavuus jäi matalaksi)
+| 3.5   | 8    | "käyttäjätunnus vähintään 3 merkkiä" -ilmoitus, ylläpitäjän ja normikäyttäjän erottaminen, testien tekeminen (jäin jumiin muutaman testin kanssa,testikattavuus jäi matalaksi)
 | 9.5.  | 5    |  TkInterin opiskelua ja graafisen käyttöliittymän käyttöönottoa
 | 10.5. | 6    | Graafisen käyttöliittymän käyttöönottoa
-Yht.71,5h
+| 11.5  | 8    | Adminin toimintojen lisääminen graafiseen käyttöliittymään
+Yht.79,5h
