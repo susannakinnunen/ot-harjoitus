@@ -9,6 +9,9 @@ class AdminView:
         self._handle_add_stretch = handle_add_stretch
         self._stretching_service = StretchingService()
 
+        self._error_variable = None
+        self._error_label = None
+
         self._initialize()
 
     def pack(self):
@@ -18,9 +21,26 @@ class AdminView:
         """"Tuhoaa näkymän."""
         self._frame.destroy()
 
+    def _show_error(self, message):
+        self._error_variable.set(message)
+        self._error_label.grid()
+
+    def _hide_error(self):
+        self._error_label.grid_remove()
+
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
+
+        self._error_variable = StringVar(self._frame)
+
+        self._error_label = ttk.Label(
+            master=self._frame,
+            textvariable=self._error_variable,
+            foreground="red"
+        )
+
+        self._error_label.grid(padx=5, pady=5)
 
         heading_label = ttk.Label(master=self._frame, text="Lisää venytys")
 
@@ -35,25 +55,30 @@ class AdminView:
 
         add_button = ttk.Button(master=self._frame, text="Lisää", command=self.add_stretch_handler)
 
-        heading_label.grid(row=0,column=0)
+        heading_label.grid(padx=5, pady=5)
         
-        bodypart_label.grid(row=1,column=0)
-        self._bodypart_entry.grid(row=1,column=1)
+        bodypart_label.grid(padx=5, pady=5)
+        self._bodypart_entry.grid(padx=5, pady=5)
 
-        stretch_name_label.grid(row=2,column=0)
-        self._stretch_name_entry.grid(row=2,column=1)
+        stretch_name_label.grid(padx=5, pady=5)
+        self._stretch_name_entry.grid(padx=5, pady=5)
 
-        stretch_instructions_label.grid(row=3,column=0)
-        self._stretch_instructions_entry.grid(row=3,column=1)
+        stretch_instructions_label.grid(padx=5, pady=5)
+        self._stretch_instructions_entry.grid(padx=5, pady=5)
         
-        add_button.grid(row=4,column=0)
+        add_button.grid(padx=5, pady=5)
 
+        self._hide_error()
 
     def add_stretch_handler(self):
         bodypart = self._bodypart_entry.get()
         stretch_name = self._stretch_name_entry.get()
         stretch_instructions = self._stretch_instructions_entry.get()
 
+        if len(bodypart) == 0 or len(stretch_name) == 0 or len(stretch_instructions) == 0:
+            self._show_error("Mikään kentistä ei saa olla tyhjä")
+            return
+        
         self._stretching_service.add_bodypart(bodypart, stretch_name)
         self._stretching_service.add_stretch(stretch_name,stretch_instructions)
         self._stretching_service.add_combination(bodypart, stretch_name)

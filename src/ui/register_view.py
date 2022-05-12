@@ -1,12 +1,18 @@
 from tkinter import ttk, StringVar, constants
 from services.stretching_services import StretchingService
 
+error_username = "Tapahtui virhe, valitse uusi käyttäjänimi"
+error_too_short = "Käyttäjätunnuksen ja salasanan minimipituus 3 merkkiä"
+
 class RegisterView:
     def __init__(self, root, handle_register_button, handle_register_button_admin):
         self._root = root
         self._handle_register_button = handle_register_button
         self._handle_register_button_admin = handle_register_button_admin
         self._frame = None
+
+        self._error_variable = None
+        self._error_label = None
 
         self.stretching_service = StretchingService()
         
@@ -15,15 +21,25 @@ class RegisterView:
     def destroy(self):
         print("nyt tuhotaan rekisteri")
         self._frame.destroy()
+      
+    def pack(self):
+        """"Näyttää näkymän."""
+        self._frame.pack(fill=constants.X)
+
+    def _show_error(self, message):
+        self._error_variable.set(message)
+        self._error_label.grid()
+
+    def _hide_error(self):
+        self._error_label.grid_remove()
 
     
     def _register_handler(self):
         username = self._username_entry.get()
         password = self._password_entry.get()
-        error_too_short = "käyttäjätunnuksen minimipituus 3 merkkiä"
-        if len(username) < 3:
-            print(error_too_short)
-
+        if len(username) < 3 or len(password) <3:
+            self._show_error(error_too_short)
+            return
         self.stretching_service.create_new_user(username,password)
         admin = self.stretching_service.check_if_admin(username)
         if admin:
@@ -35,6 +51,16 @@ class RegisterView:
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
 
+        self._error_variable = StringVar(self._frame)
+
+        self._error_label = ttk.Label(
+            master=self._frame,
+            textvariable=self._error_variable,
+            foreground="red"
+        )
+
+        self._error_label.grid(padx=5, pady=5)
+
         heading_label = ttk.Label(master=self._frame, text="Luo uusi käyttäjätunnus ja salasana.")
         
         username_label = ttk.Label(master=self._frame, text="Käyttäjätunnus")
@@ -45,17 +71,16 @@ class RegisterView:
 
         register_button = ttk.Button(master=self._frame, text="Rekisteröidy",command=self._register_handler)
 
-        heading_label.grid(row=0,column=0,columnspan=2)
+        heading_label.grid(padx=5, pady=5)
         
-        username_label.grid(row=1,column=0)
-        self._username_entry.grid(row=1,column=1)
+        username_label.grid(padx=5, pady=5)
+        self._username_entry.grid(padx=5, pady=5)
 
-        password_label.grid(row=2,column=0)
-        self._password_entry.grid(row=2,column=1)
+        password_label.grid(padx=5, pady=5)
+        self._password_entry.grid(padx=5, pady=5)
 
-        register_button.grid(row=3,column=0)
+        register_button.grid(padx=5, pady=5)
+        
+        self._hide_error()
 
-    
-    def pack(self):
-        """"Näyttää näkymän."""
-        self._frame.pack(fill=constants.X)
+
