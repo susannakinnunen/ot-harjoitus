@@ -74,7 +74,7 @@ class BodypartRepository:
                 bodypart_stretch_row = row.split(";")
                 bodypart = bodypart_stretch_row[0]
                 if bodypart == bodypart_name:
-                    file.writerow(row+stretch_name+"\n")
+                    file.writerow(row+";"+stretch_name+"\n")
 
             return f"Lisätty {bodypart_name} ja {stretch_name}"
 

@@ -22,19 +22,19 @@ class StretchView:
         self._frame.pack(fill=constants.X)
 
     def _initialize(self):
-        self._streching_service.combine_stretches_and_bodyparts()
+        #self._streching_service.combine_stretches_and_bodyparts()
         self._frame = ttk.Frame(master=self._root)
 
         stretches = self._streching_service.show_stretch(self.bodypart)
-    
-        
+        print(stretches)
         index = 0
         for stretch in stretches:
             stretch_name = ttk.Label(master=self._frame, text=f"venyttelyn nimi: {stretch[0]}")
             stretch_instructions = ttk.Label(master=self._frame, text=f"ohjeet: {stretch[1]}")
 
             stretch_name.grid(row=index,column=0)
-            stretch_instructions.grid(row=index+1,column=0)
+            index += 1
+            stretch_instructions.grid(row=index,column=0)
             index += 1
     
 

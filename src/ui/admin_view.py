@@ -53,9 +53,9 @@ class AdminView:
         bodypart = self._bodypart_entry.get()
         stretch_name = self._stretch_name_entry.get()
         stretch_instructions = self._stretch_instructions_entry.get()
-        self._stretching_service.add_stretch(stretch_name,stretch_instructions)
 
         self._stretching_service.add_bodypart(bodypart, stretch_name)
+        self._stretching_service.add_stretch(stretch_name,stretch_instructions)
         self._stretching_service.add_combination(bodypart, stretch_name)
 
         self._handle_add_stretch()

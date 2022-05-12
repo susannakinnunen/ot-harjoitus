@@ -59,31 +59,34 @@ class StretchRepository():
 
     def find_by_bodypart(self, bodypart):
         cursor = self.connection.cursor()
-
+        stretch_list = []
         bodypart_id = self.bodypart_repository.get_bodypart_id(bodypart)
+        print(bodypart_id)
         if bodypart_id is False:
             return False
-        stretch_id = self.get_stretch_id_by_id(bodypart_id)
-        if stretch_id is False:
+        stretch_ids = self.get_stretch_id_by_id(bodypart_id)
+        if stretch_ids is False:
             return False
 
-        cursor.execute("SELECT S.name, S.description FROM Stretches S WHERE id=:stretch_id", {
-            "stretch_id": stretch_id})
+        for stretch_id in stretch_ids:
+            cursor.execute("SELECT S.name, S.description FROM Stretches S WHERE id=:stretch_id", {
+                "stretch_id": stretch_id})
 
-        rows = cursor.fetchall()
-
-        return [(row["name"], row["description"]) for row in rows]
+            rows = cursor.fetchall()
+            for row in rows:
+                row_item = (row["name"], row["description"])
+                stretch_list.append(row_item)
+        return stretch_list
 
     def get_stretch_id_by_id(self, bodypart_id):
         cursor = self.connection.cursor()
         result = cursor.execute("SELECT stretch_id FROM BodypartStretches WHERE bodypart_id=:bodypart_id", {
                                 "bodypart_id": bodypart_id})
-        stretch_id_result = result.fetchone()
-        if stretch_id_result is None:
+        stretch_id_results = result.fetchall()
+        if stretch_id_results is None:
             return False
-
-        strech_id = stretch_id_result[0]
-        return strech_id
+        print([stretch_id_result["stretch_id"] for stretch_id_result in stretch_id_results])
+        return [stretch_id_result["stretch_id"] for stretch_id_result in stretch_id_results]
 
     def get_stretch_id_by_name(self, stretch_name):
         cursor = self.connection.cursor()

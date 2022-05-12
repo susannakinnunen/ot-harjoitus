@@ -10,6 +10,7 @@ from ui.bodypart_view import BodypartView
 from ui.stretch_view import StretchView
 from ui.bodypart_view_admin import BodypartViewAdmin
 from ui.admin_view import AdminView
+from services.stretching_services import StretchingService
 #from tkinter import Tk, ttk
 
 # commands
@@ -23,6 +24,8 @@ class UI:
        
         self._root = root
         self._current_view = None
+        self.stretching_service = StretchingService()
+        self.stretching_service.combine_stretches_and_bodyparts()
 
     def start(self):
         """Käynnistää käyttöliittymän."""

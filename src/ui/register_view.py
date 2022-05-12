@@ -26,10 +26,7 @@ class RegisterView:
 
         self.stretching_service.create_new_user(username,password)
         admin = self.stretching_service.check_if_admin(username)
-        print(username)
-        print(admin)
         if admin:
-            print(admin)
             self._handle_register_button_admin()
         else:
             self._handle_register_button()

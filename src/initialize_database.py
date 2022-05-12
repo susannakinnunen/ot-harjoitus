@@ -23,7 +23,7 @@ def drop_tables(connection):
 
 def create_tables(connection):
     cursor = connection.cursor()
-    sql_bodyparts = "CREATE TABLE Bodyparts (id INTEGER PRIMARY KEY, name TEXT);"
+    sql_bodyparts = "CREATE TABLE Bodyparts (id INTEGER PRIMARY KEY, name TEXT UNIQUE);"
     cursor.execute(sql_bodyparts)
     connection.commit()
 
