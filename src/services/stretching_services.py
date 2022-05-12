@@ -45,10 +45,8 @@ class StretchingService:
     def combine_stretches_and_bodyparts(self):
         self.bodypart_stretch_repository.get_bodyparts_and_stretches_from_file()
 
-    def create_new_user(self, username, password, admin):
-        error_too_short = "käyttäjätunnuksen minimipituus 3 merkkiä"
-        if len(username) < 3:
-            return error_too_short
+    def create_new_user(self, username, password):
+        admin = self.check_if_admin(username)
         user = self.user_repository.add_user(username, password, admin)
         if not user:
             return False
