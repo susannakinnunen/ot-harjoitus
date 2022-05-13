@@ -2,9 +2,9 @@
 
 ## Rakenne
 
-Ohjelma käynnistetetään index.py-moduulissa, joka luo graafisen käyttöliittymän pohjan, ja ohjaa käskyt ui-hakemiston UI-luokalle. Ui-hakemisto sisältää käyttöliittymän eri näkymiin tarvittavat luokat.
+Ohjelma käynnistetetään index.py-moduulissa, joka luo graafisen käyttöliittymän pohjan ja ohjaa käskyt ui-hakemiston UI-luokalle. Ui-hakemisto sisältää käyttöliittymän eri näkymiin tarvittavat luokat.
 
-Luokat ohjaavat käskynsä services-hakemistossa sijaitsevalle StretchingServices -luokalle. Tämä luokka käyttää repositories-hakemistossa olevia Reporitory-luokkien (esim. BodypartRepository) tiedontallennusta ja -hakemista varten laadittuja funkitoita.
+Käyttöliittymäluokat ohjaavat käskynsä services-hakemistossa sijaitsevalle StretchingServices-luokalle. Tämä luokka käyttää repositories-hakemistossa olevia Reporitory-luokkien (esim. BodypartRepository) tiedontallennusta ja -hakemista varten laadittuja funkitoita.
 
 Tämän lisäksi kehonosista tehdään myös oma olionsa entities-hakemiston Bodypart-luokassa.
 
@@ -25,15 +25,15 @@ Näkymät ovat:
 5. (Ylläpitäjä) Lista kehonosista, hakukenttä venytyksille, kirjaudu ulos -painike, ylläpitäjän toiminnallisuudet painike.
 6. (Normikäyttäjä) Lista venytyksistä tietylle kehonosalle, josta pääsee takaisin 4. näkymään.
 7. (Ylläpitäjä) Lista venytyksistä tietylle kehonosalle, josta pääsee takaisin 5.näkymään.
-8. (Ylläpitäjä) Venytyksen lisäämisemahdollisuus.
+8. (Ylläpitäjä) Venytyksen lisäämismahdollisuus.
 
 Näkymät sijaitsevat ui-hakemistossa.
 
 ## Sovelluslogiikka
 
-Sovelluksen olennaiset tietomallit rakentuvat kehonosista-palasista ja niihin liittyvistä venytysten nimistä ja ohjeista. Nämä kaikki on tallennettu .csv-tiedostoihin ja tietokantaa. Bodyparts.csv -tiedostossa on tallennettuna samalla rivillä sekä kehonosa että kaikkien venytysten nimet, jotka siihen kuuluu.
+Sovelluksen olennaiset tietomallit rakentuvat kehono-palasista ja niihin liittyvistä venytysten nimistä ja ohjeista. Nämä kaikki on tallennettu .csv-tiedostoihin ja tietokantaan. Bodyparts.csv -tiedostossa on tallennettuna samalla rivillä sekä kehonosa että kaikkien venytysten nimet, jotka siihen kehonosaan kuuluu.
 
-StretchingServices luokka teettää repositories-hakemistossa sijaitsevilla erinäisillä Repository-luokilla tiedon tallennukseen ja hakuun liittyviä tehtäviä. Näihin kuuluu mm. kehonosien ja venyttelyohjeiden lisääminen tietokantaan ja .csv-tiedostoihin, niiden hakeminen tietokannasta ja käyttäjätietojen tallentamiseen liittyvät operaatiot.
+StretchingServices luokka teettää repositories-hakemistossa sijaitsevilla erinäisillä Repository-luokilla tiedon tallennukseen ja hakuun liittyviä tehtäviä. Näihin kuuluu mm. kehonosien ja venyttelyohjeiden lisääminen tietokantaan ja .csv-tiedostoihin sekä niiden hakeminen tietokannasta ja käyttäjätietojen tallentamiseen liittyvät operaatiot.
 
 ### Tiedon tallennus
 
@@ -45,9 +45,9 @@ Tietokantataulut alustetaan seuraavanlaisesti:
 - Stretches (id INTEGER PRIMARY KEY, name TEXT UNIQUE, description TEXT UNIQUE)
 - BodypartStretches (id INTEGER PRIMARY KEY, bodypart_id INTEGER REFERENCES Bodyparts, stretch_id INTEGER REFERENCES Stretches)
 
-Bodyparts-taulussa jokaisella kehonosalla on id ja uniikki nimi. Stretches-taulussa venytyksillä on id, uniikki nimi ja uniikki kuvaus. Uniikeilla nimillä ja kuvauksilla varmistetaan se, että tietokantaa hyödyntävät operaatiot valitsevat aina halutun kohteen. BodypartStretches-taulussa yhdistetään toisiinsa sopivat kehonosat ja venytykset laittamalla saman id:n alle Bodyparts-taulussa kehonsaan viittavan id:n ja Stretches-taulussa olevaan venytykseen liittyvän id-tunnuksen.
+Bodyparts-taulussa jokaisella kehonosalla on id ja uniikki nimi. Stretches-taulussa venytyksillä on id, uniikki nimi ja uniikki kuvaus. Uniikeilla nimillä ja kuvauksilla varmistetaan se, että tietokantaa hyödyntävät operaatiot valitsevat aina halutun kohteen. BodypartStretches-taulussa yhdistetään toisiinsa sopivat kehonosat ja venytykset laittamalla saman id:n alle Bodyparts-taulussa kehonosaan viittavan id-tunnuksen ja Stretches-taulussa olevan venytyksen id-tunnuksen.
 
-Sovellus toimisi tällä hetkellä myös ilman .csv-tiedostoja. Ne on lähinnä "tulevaisuutta" ajatellen siinä mielessä, että niissä voisi olla paljonkin kehonosia ja venytyksiä jo valmiina. Koska SQLite täytyy aina alustaa uudelleen, csv-tiedostossa voisi olla valmiina paljon kehonosia ja niihin liittyviä venyttelyohjeita. Nyt kuitenkin sovelluksen käynnistyessä luodaan uudet csv.tiedostot ja niihin alustetaan yksi venyttelyohje takareisille. Tämä on toistaiseksi tällä tyylillä toteutettu, jotta sovellus pysyy siistinä. 
+Sovellus toimisi tällä hetkellä myös ilman .csv-tiedostoja. Ne ovat lähinnä tulevaisuutta ajatellen siinä mielessä, että niissä voisi olla paljonkin kehonosia ja venytyksiä jo valmiina. Koska SQLite täytyy aina alustaa uudelleen, csv-tiedostossa voisi olla valmiina paljon kehonosia ja niihin liittyviä venyttelyohjeita. Nyt kuitenkin sovelluksen käynnistyessä luodaan uudet csv.tiedostot ja niihin alustetaan yksi venyttelyohje takareisille. Tämä on toistaiseksi tällä tyylillä toteutettu, jotta sovellus pysyy siistinä. 
 
 
 ## Päätoiminnallisuudet 
@@ -58,9 +58,9 @@ Tässä kolmitasoista kerrosarkkitehtuuria hyödyntävässä sovellusksessa eri 
 
 ### Sekvenssikaavio
 
-Seuraavassa sekvenssikaaviossa näkee, millä tavalla kaikki toiminnallisuudet toimivat käyttäjästä eteenpäin käyttöliittymästä vastaaville luokille, sieltä SterchingService-luokalle, jonka jälkeen käytetään Repository-luokkia. 
+Seuraavassa sekvenssikaaviossa näkee, millä tavalla kaikki toiminnallisuudet etenevät käyttäjältä käyttöliittymän luokille, sieltä SterchingService-luokalle, jonka jälkeen käytetään Repository-luokkia. 
 
-Sekvenssikaavio näyttää, kuinka käyttäjä saa listan tiettyä kehonosaa vastaavista venyttelyohjeista. Ihan alkua olen hieman oikaissut kaaviossa: Käyttäjä syöttää edellisellä BodypartViewillä kehonosannimen, mikä siirtyy sitten UI-luokan kautta eteenpäin StretchViewille. StretchViewistä lähtien kaavio näyttää tarkemmin, miten venytyslistan hakeminen toimii.
+Alla oleva sekvenssikaavio näyttää, kuinka käyttäjä saa listan tiettyä kehonosaa vastaavista venyttelyohjeista. Ihan alkua olen hieman oikaissut kaaviossa: Käyttäjä syöttää edellisellä BodypartViewillä kehonosannimen, mikä siirtyy sitten UI-luokan kautta eteenpäin StretchViewille. StretchViewistä lähtien kaavio näyttää tarkemmin, miten venytyslistan hakeminen toimii.
 
 ```mermaid
 sequenceDiagram
@@ -82,7 +82,7 @@ StretchingService -->> StretchView: stretch_list
 # Ohjelman rakenteen heikkoudet
 
 #### Käyttöliittymä
-Käyttöliittymässä on jonkin verran toisteisuutta ylläpitäjän ja normikäyttäjän näkymissä. käyttöliittymän ulkoasu ei ole viimeistelty.
+Käyttöliittymässä on jonkin verran toisteisuutta ylläpitäjän ja normikäyttäjän näkymissä. Käyttöliittymän ulkoasu ei ole viimeistelty.
 
 #### Sovelluslogiikka
 En ole aivan vakuuttunut entities.hakemiston Bodypart-olion hyödyllisyydestä sovelluksen tämän hetkisessä versiossa.
