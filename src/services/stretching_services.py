@@ -28,16 +28,16 @@ class StretchingService:
     def get_all_bodyparts(self):
         return self.bodypart_repository.find_all()
 
-    def initialize_bodypart_table(self):
-        bodypart_list = self.bodypart_repository.get_bodyparts_from_file()
-        for bodypart in bodypart_list:
-            self.bodypart_repository.add_bodypart(bodypart)
+    #def initialize_bodypart_table(self):
+        #bodypart_list = self.bodypart_repository.get_bodyparts_from_file()
+        #for bodypart in bodypart_list:
+            #self.bodypart_repository.add_bodypart(bodypart)
 
-    def initialize_stretch_table(self):
-        self.stretch_repository.get_stretches_from_file()
+    #def initialize_stretch_table(self):
+        #self.stretch_repository.get_stretches_from_file()
 
-    def get_all_stretches(self):
-        return self.stretch_repository.find_all()
+    #def get_all_stretches(self):
+        #return self.stretch_repository.find_all()
 
     def show_stretch(self, bodypart):
         return self.stretch_repository.find_by_bodypart(bodypart)
