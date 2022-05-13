@@ -24,7 +24,7 @@ class BodypartStretchRepository():
                         continue
                     stretch = item
                     self.add_combination(bodypart, stretch)
-        #return f"{bodypart} ja {stretch}"
+        return f"{bodypart} ja {stretch}"
 
     def add_combination(self, bodypart_name, stretch_name):
 

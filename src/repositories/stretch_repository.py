@@ -30,12 +30,15 @@ class StretchRepository():
 
     def add_stretch(self, name, description):
         cursor = self.connection.cursor()
+        try:
+            sql = "INSERT INTO Stretches (name, description) VALUES (:name, :description)"
 
-        sql = "INSERT INTO Stretches (name, description) VALUES (:name, :description)"
+            cursor.execute(sql, {"name": name, "description": description})
 
-        cursor.execute(sql, {"name": name, "description": description})
-
-        self.connection.commit()
+            self.connection.commit()
+            return
+        except:
+            return False
 
     def write_stretches_to_file_and_database(self, name, description):
         try:
@@ -82,9 +85,8 @@ class StretchRepository():
         result = cursor.execute("SELECT stretch_id FROM BodypartStretches WHERE bodypart_id=:bodypart_id", {
                                 "bodypart_id": bodypart_id})
         stretch_id_results = result.fetchall()
-        if stretch_id_results is None:
+        if stretch_id_results is None or stretch_id_results == []:
             return False
-        print([stretch_id_result["stretch_id"] for stretch_id_result in stretch_id_results])
         return [stretch_id_result["stretch_id"] for stretch_id_result in stretch_id_results]
 
     def get_stretch_id_by_name(self, stretch_name):
