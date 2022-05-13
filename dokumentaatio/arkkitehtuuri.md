@@ -2,7 +2,7 @@
 
 ## Rakenne
 
-Ohjelma käynnistetetään index.py-moduulissa, joka luo graafisen käyttöliittymän pohjan, ja ohjaa seuraavat käskyt ui-hakemistolle. Ui-hakemisto sisältää käyttöliittymän eri näkymiin tarvittavat luokat.
+Ohjelma käynnistetetään index.py-moduulissa, joka luo graafisen käyttöliittymän pohjan, ja ohjaa käskyt ui-hakemiston UI-luokalle. Ui-hakemisto sisältää käyttöliittymän eri näkymiin tarvittavat luokat.
 
 Luokat ohjaavat käskynsä services-hakemistossa sijaitsevalle StretchingServices -luokalle. Tämä luokka käyttää repositories-hakemistossa olevia Reporitory-luokkien (esim. BodypartRepository) tiedontallennusta ja -hakemista varten laadittuja funkitoita.
 
@@ -40,10 +40,10 @@ StretchingServices luokka teettää repositories-hakemistossa sijaitsevilla erin
 bodyparts.csv-tiedostoon tallennetaan kehonosan ja siihen liittyvän venytyksen nimi.
 stretches.csv-tiedostoon tallennetaan venytyksen nimi ja sen ohjeet. 
 
-Tietokantataulut alustetaan seuraavanlaisesti.
-Bodyparts (id INTEGER PRIMARY KEY, name TEXT UNIQUE)
-Stretches (id INTEGER PRIMARY KEY, name TEXT UNIQUE, description TEXT UNIQUE)
-BodypartStretches (id INTEGER PRIMARY KEY, bodypart_id INTEGER REFERENCES Bodyparts, stretch_id INTEGER REFERENCES Stretches)
+Tietokantataulut alustetaan seuraavanlaisesti:
+- Bodyparts (id INTEGER PRIMARY KEY, name TEXT UNIQUE)
+- Stretches (id INTEGER PRIMARY KEY, name TEXT UNIQUE, description TEXT UNIQUE)
+- BodypartStretches (id INTEGER PRIMARY KEY, bodypart_id INTEGER REFERENCES Bodyparts, stretch_id INTEGER REFERENCES Stretches)
 
 Bodyparts-taulussa jokaisella kehonosalla on id ja uniikki nimi. Stretches-taulussa venytyksillä on id, uniikki nimi ja uniikki kuvaus. Uniikeilla nimillä ja kuvauksilla varmistetaan se, että tietokantaa hyödyntävät operaatiot valitsevat aina halutun kohteen. BodypartStretches-taulussa yhdistetään toisiinsa sopivat kehonosat ja venytykset laittamalla saman id:n alle Bodyparts-taulussa kehonsaan viittavan id:n ja Stretches-taulussa olevaan venytykseen liittyvän id-tunnuksen.
 
@@ -52,28 +52,38 @@ Sovellus toimisi tällä hetkellä myös ilman .csv-tiedostoja. Ne on lähinnä 
 
 ## Päätoiminnallisuudet 
 
+Käyttäjä pystyy rekisteröitymään uudeksi käyttäjäksi ja kirjautumaan sisään. Käyttäjä näkee listan kehonosista ja voi hakea kehonosaan liittyviä venyttelyohjeita. Ylläpitäjä voi myös lisätä uusia kehonosia ja niihin liittyviä venyttelyohjeita. 
 
+Tässä kolmitasoista kerrosarkkitehtuuria hyödyntävässä sovellusksessa eri hakemistoissa sijaitsevat luokat hyödyntävät toisiaan.
 
 ### Sekvenssikaavio
 
-Sekvenssikaavio näyttää kuinka käyttäjä saa listan kehonosista.
+Seuraavassa sekvenssikaaviossa näkee, millä tavalla kaikki toiminnallisuudet toimivat käyttäjästä eteenpäin käyttöliittymästä vastaaville luokille, sieltä SterchingService-luokalle, jonka jälkeen käytetään Repository-luokkia. 
+
+Sekvenssikaavio näyttää, kuinka käyttäjä saa listan tiettyä kehonosaa vastaavista venyttelyohjeista. Ihan alkua olen hieman oikaissut kaaviossa: Käyttäjä syöttää edellisellä BodypartViewillä kehonosannimen, mikä siirtyy sitten UI-luokan kautta eteenpäin StretchViewille. StretchViewistä lähtien kaavio näyttää tarkemmin, miten venytyslistan hakeminen toimii.
 
 ```mermaid
 sequenceDiagram
 actor User
-User ->> UI: A
-UI ->> BodypartView: show_bodyparts()
-BodypartView ->> StretchingService: get_all_bodyparts()
-StretchingService ->> BodypartRepositories: find_all()
-BodypartRepositories -->> StretchingService: lista
-StretchingService -->> BodypartView: lista
-BodypartView -->> UI: lista
-UI -->> User: kehonosat yksitellen listasta
+User ->> UI: show_stretch_view(bodypart)
+UI ->> StretchView: bodypart
+StretchView ->> StretchingService: show_stretch(bodypart)
+StretchingService ->> StretchRepository: find_by_bodypart(bodypart)
+StretchRepository ->> BodypartRepository: get_bodypart_id(bodypart)
+BodypartRepository -->> StretchRepository: bodypart id
+StretchRepository ->> StretchRepository: get_stretch_id_by_id(bodypart_id)
+StretchRepository -->> StretchRepository: stertch id
+StretchRepository -->> StretchingService: stretch list
+StretchingService -->> StretchView: stretch_list
+
+
+
 ```
 # Ohjelman rakenteen heikkoudet
 
 #### Käyttöliittymä
-Käyttöliittymässä on jonkin verran toisteisuutta ylläpitäjän ja normikäyttäjän näkymissä.
+Käyttöliittymässä on jonkin verran toisteisuutta ylläpitäjän ja normikäyttäjän näkymissä. käyttöliittymän ulkoasu ei ole viimeistelty.
 
 #### Sovelluslogiikka
 En ole aivan vakuuttunut entities.hakemiston Bodypart-olion hyödyllisyydestä sovelluksen tämän hetkisessä versiossa.
+.csv-tiedostot ovat melkein turhia, mutta ne on laitettu tähän versioon tulevaa sovelluksen kehitystä ajatellen.
