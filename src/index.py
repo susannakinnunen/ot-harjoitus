@@ -1,5 +1,5 @@
 from tkinter import Tk
-from ui.ui_uusi import UI
+from ui.ui import UI
 from initialize_database import initialize_database
 from initialize_csv import InitializeCSV
 

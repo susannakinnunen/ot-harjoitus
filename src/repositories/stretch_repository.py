@@ -61,7 +61,6 @@ class StretchRepository():
         cursor = self.connection.cursor()
         stretch_list = []
         bodypart_id = self.bodypart_repository.get_bodypart_id(bodypart)
-        print(bodypart_id)
         if bodypart_id is False:
             return False
         stretch_ids = self.get_stretch_id_by_id(bodypart_id)
