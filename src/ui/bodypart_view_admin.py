@@ -60,7 +60,7 @@ class BodypartViewAdmin:
         self._search_stretch_by_bodypart_entry = ttk.Entry(master=self._frame)
         search_stretch_by_bodypart_button = ttk.Button(master=self._frame, text="Etsi",command=self._bodypart_handler)
 
-        admin_button = ttk.Button(master=self._frame, text="ylläpitäjän toiminnot", command=self._handle_admin_button)
+        admin_button = ttk.Button(master=self._frame, text="Ylläpitäjän toiminnot", command=self._handle_admin_button)
 
         logout_button = ttk.Button(master=self._frame, text="Kirjaudu ulos", command=self._handle_logout)
         

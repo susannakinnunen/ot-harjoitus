@@ -1,7 +1,5 @@
-from re import S
-from turtle import back
 from services.stretching_services import StretchingService
-from tkinter import ttk, StringVar, constants
+from tkinter import ttk, constants
 
 error = "Tapahtui virhe, kirjoita uudelleen."
 
