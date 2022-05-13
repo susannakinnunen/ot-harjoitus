@@ -22,7 +22,6 @@ class BodypartViewAdmin:
 
     def destroy(self):
         """"Tuhoaa näkymän."""
-        print("nyt tuhotaan bodypart admin")
         self._frame.destroy()
 
     def _show_error(self, message):
@@ -49,12 +48,9 @@ class BodypartViewAdmin:
 
         self._bodyparts = self._stretching_service.get_all_bodyparts()
 
-        index = 0
-        print(f"tässä on kehonosat{self._bodyparts} admin")
         for bodypart in self._bodyparts:
             bodypart_button = ttk.Label(master=self._frame, text=bodypart)
             bodypart_button.grid(padx=5, pady=5)
-            index += 1
 
         search_stretch_by_bodypart_label = ttk.Label(master=self._frame, text="Etsi venyttely kirjoittamalla listassa annettu kehonosa")
         self._search_stretch_by_bodypart_entry = ttk.Entry(master=self._frame)
@@ -78,7 +74,6 @@ class BodypartViewAdmin:
     def _bodypart_handler(self):
         bodypart = self._search_stretch_by_bodypart_entry.get()
         stretches = self._stretching_service.show_stretch(bodypart)
-        print(f"täässä {stretches}")
         if stretches is False:
             self._show_error("Tapahtui virhe, kirjoita kehonosa uudestaan.")
             return

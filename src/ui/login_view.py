@@ -19,7 +19,6 @@ class LoginView:
         self._initialize()
 
     def destroy(self):
-        print("nyt tuhotaan login")
         self._frame.destroy()
       
     def pack(self):

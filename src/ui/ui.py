@@ -71,21 +71,9 @@ class UI:
 
         self._current_view.pack()
 
-
    
     def _show_admin_view(self):
         self._hide_current_view()
         self._current_view = AdminView(self._root, self._show_bodypart_view_admin)
         self._current_view.pack()
    
-   
-    """
-    def _handle_create_new_user_button(self):
-        self._show_register_view()
-
-    def _handle_register_button(self):
-        self._show_bodypart_view()
-
-    def _handle_bodypart_button(self,bodypart):
-        self._show_stretch_view(bodypart)
-    """

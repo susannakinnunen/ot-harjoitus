@@ -42,21 +42,3 @@ class StretchViewAdmin:
 
 
 
-
-
-
-"""
-
-    def initialize_stretches(self):
-        self.streching_service.combine_stretches_and_bodyparts()
-
-    def show_stretch(self, bodypart):
-        stretch = self.streching_service.show_stretch(bodypart)
-        if stretch == False:
-            return error
-        return stretch
-
-    def add_stretch(self, stretch, description):
-        self.streching_service.add_stretch(stretch, description)
-
-"""
