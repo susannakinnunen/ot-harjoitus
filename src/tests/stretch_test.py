@@ -33,19 +33,20 @@ class Stretch(unittest.TestCase):
         vastaus = self.stretch_repository.find_all()
 
         self.assertEqual(vastaus, [("Ranteen venytys", "Nosta toinen käsivarsi suorana hieman ylöspäin etuvartalosi edessä. Paina toisella kädellä suorana olevan käden kämmenselkää kohti etuvartaloa. Sormet osoittavat kohti lattiaa. Käännä sitten venytettävän puolen kämmen pois päin etukehosta, sormet kohti lattiaa. Paina toisella kädellä venytettävän käden sormia kohti etukehoaa.Toista liikkeet myös toiselle puolelle.")])
-    """
+
     def test_find_by_bodypart(self):
         self.stretch_repository.write_stretches_to_file_and_database(
             "Ranteen venytys", "Nosta toinen käsivarsi suorana hieman ylöspäin etuvartalosi edessä. Paina toisella kädellä suorana olevan käden kämmenselkää kohti etuvartaloa. Sormet osoittavat kohti lattiaa. Käännä sitten venytettävän puolen kämmen pois päin etukehosta, sormet kohti lattiaa. Paina toisella kädellä venytettävän käden sormia kohti etukehoaa.Toista liikkeet myös toiselle puolelle.")
 
-        self.bodypart_repository.add_bodypart("ranne")
+        self.bodypart_repository.write_bodyparts_to_file_and_database(
+            "ranne", "Ranteen venytys")
 
         self.bodypart_stretch_repository.add_combination("ranne", "Ranteen venytys")
 
         vastaus = self.stretch_repository.find_by_bodypart("ranne")
 
         self.assertEqual(vastaus, [("Ranteen venytys", "Nosta toinen käsivarsi suorana hieman ylöspäin etuvartalosi edessä. Paina toisella kädellä suorana olevan käden kämmenselkää kohti etuvartaloa. Sormet osoittavat kohti lattiaa. Käännä sitten venytettävän puolen kämmen pois päin etukehosta, sormet kohti lattiaa. Paina toisella kädellä venytettävän käden sormia kohti etukehoaa.Toista liikkeet myös toiselle puolelle.")])
-    """
+
 
     def test_find_by_bodypart_false_bodypart_id(self):
         vastaus = self.stretch_repository.find_by_bodypart("ranne")
@@ -69,4 +70,4 @@ class Stretch(unittest.TestCase):
 
         vastaus = self.stretch_repository.get_stretch_id_by_id(bodypart_id)
 
-        self.assertEqual(vastaus, 1)
+        self.assertEqual(vastaus, [1])

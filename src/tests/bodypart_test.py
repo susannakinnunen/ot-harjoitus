@@ -1,4 +1,3 @@
-from html import entities
 import unittest
 from repositories.bodypart_repository import BodypartRepository
 from repositories.stretch_repository import StretchRepository
