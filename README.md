@@ -1,6 +1,5 @@
 # Venyttelysovellus
 
-HUOM!Tällä hetkellä(3.5.) sovellus ei toimi, yritän korjata bugin. 
 Venyttelysovelluksen tarkoituksena on olla sovellus, josta voi etsiä kehonosakohtaisia venyttelyohjeita.
 Käyttäjän tulee ensin rekisteröityä ja kirjautua sisään, ennen kuin pääsee näkemään venyttelyohjeita.
 
