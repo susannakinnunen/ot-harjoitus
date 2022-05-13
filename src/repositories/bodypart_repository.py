@@ -67,18 +67,8 @@ class BodypartRepository:
                 bodypart_list.append(bodypart)
         return bodypart_list
 
-    def _add_stretchnames_to_bodyparts_file(self, bodypart_name, stretch_name):
-        with open(bodypart_file, "w", encoding='utf-8') as file:
-            for row in file:
-                row = row.replace("\n", "")
-                bodypart_stretch_row = row.split(";")
-                bodypart = bodypart_stretch_row[0]
-                if bodypart == bodypart_name:
-                    file.writerow(row+";"+stretch_name+"\n")
-
-            return f"Lisätty {bodypart_name} ja {stretch_name}"
-
     def write_bodyparts_to_file_and_database(self, bodypart, stretch):
+        """ Lisää kehonosan ja siihen kuuluvan venytyksen nimen bodyparts.csv-tiedostoon, jos kehonosa on uusi. Tietokantaan tallennetaan kehonosan nimi. """
         try:
             check = self.add_bodypart(bodypart)
             if check != "exists":
@@ -86,9 +76,13 @@ class BodypartRepository:
                     file.write(bodypart+";"+stretch+"\n")
                 return f"Lisätty kehonosa ja venytys: {bodypart} ja {stretch}"
 
-            self._add_stretchnames_to_bodyparts_file(bodypart, stretch)
-
+            with open(bodypart_file, "a", encoding='utf-8') as file:
+                file.write(bodypart+";"+stretch+"\n")
             return f"Lisätty kehonosa ja venytys: {bodypart} ja {stretch}"
+
+            #self._add_stretchnames_to_bodyparts_file(bodypart, stretch)
+
+                #return f"Lisätty kehonosa ja venytys: {bodypart} ja {stretch}"
 
         except:  # pylint: disable=bare-except
             return False

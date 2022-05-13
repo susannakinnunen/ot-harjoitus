@@ -27,7 +27,7 @@ def create_tables(connection):
     cursor.execute(sql_bodyparts)
     connection.commit()
 
-    sql_stretches = "CREATE TABLE Stretches (id INTEGER PRIMARY KEY, name TEXT, description TEXT);"
+    sql_stretches = "CREATE TABLE Stretches (id INTEGER PRIMARY KEY, name TEXT UNIQUE, description TEXT UNIQUE);"
     cursor.execute(sql_stretches)
     connection.commit()
 
