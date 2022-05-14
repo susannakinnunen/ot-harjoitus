@@ -11,6 +11,7 @@ from services.stretching_services import StretchingService
 
 class UI:
     def __init__(self, root):
+        """Sovelluksen käyttöliittymästä vastaava luokka."""
         self._root = root
         self._current_view = None
         self.stretching_service = StretchingService()

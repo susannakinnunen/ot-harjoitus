@@ -2,6 +2,7 @@ from database_connection import get_database_connection
 
 
 def drop_tables(connection):
+    """Poistaa tietokantataulut."""
     cursor = connection.cursor()
 
     sql_bodyparts = "DROP TABLE IF EXISTS Bodyparts;"
@@ -22,6 +23,7 @@ def drop_tables(connection):
 
 
 def create_tables(connection):
+    """Luo tietokantataulut."""
     cursor = connection.cursor()
     sql_bodyparts = "CREATE TABLE Bodyparts (id INTEGER PRIMARY KEY, name TEXT UNIQUE);"
     cursor.execute(sql_bodyparts)
@@ -45,6 +47,7 @@ def create_tables(connection):
 
 
 def initialize_database():
+    """Alustaa tietokantataulut"""
     connection = get_database_connection()
     drop_tables(connection)
     create_tables(connection)

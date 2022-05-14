@@ -5,6 +5,7 @@ error = "Tapahtui virhe, kirjoita uudelleen."
 
 
 class StretchView:
+    """Luokka vastaa normaalikäyttäjän venytysohjeita tarjoavasta näkymästä."""
     def __init__(self, root, bodypart, handle_back_to_bodyparts):
         self._root = root
         self.bodypart = bodypart

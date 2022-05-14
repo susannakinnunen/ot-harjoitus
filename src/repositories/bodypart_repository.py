@@ -8,13 +8,15 @@ from config import bodypart_file
 
 
 class BodypartRepository:
-    """Kehonosiin iittyvistä tietokantaoperaatioista ja csv-tiedosto-operaatioista vastaava luokka.
-    """
+    """Kehonosiin liittyvistä tietokantaoperaatioista ja
+     csv-tiedosto-operaatioista vastaava luokka."""
 
     def __init__(self):
         self.connection = get_database_connection()
 
     def add_bodypart(self, name):
+        """Lisää kehonosan tietokantaan. Kysyy check_if_exists-metodilta,
+         onko kehonosan jo tietokannassa"""
         cursor = self.connection.cursor()
         try:
             check = self.check_if_exists(name)
@@ -32,6 +34,7 @@ class BodypartRepository:
             return False
 
     def check_if_exists(self, name):
+        """Tarkistaa tietokannasta, onko kyseinen kehonosa jo tallennettuna"""
         cursor = self.connection.cursor()
 
         sql = cursor.execute(
@@ -42,6 +45,8 @@ class BodypartRepository:
         return True
 
     def find_all(self):
+        """Hakee kaikki kehonosat tietokannasta.
+        Tekee haetuista kohteista Bodypart-olioita Bodypart-luokan avulla"""
         cursor = self.connection.cursor()
 
         cursor.execute("SELECT name FROM Bodyparts")
@@ -58,6 +63,7 @@ class BodypartRepository:
         return lista
 
     def get_bodyparts_from_file(self):
+        """Hakee kehonosat .csv-tiedostosta"""
         bodypart_list = []
         with open(bodypart_file, encoding='utf-8') as file:
             for row in file:
@@ -81,6 +87,7 @@ class BodypartRepository:
             return False
 
     def get_bodypart_id(self, name):
+        """Hakee kehonosan id:n kehonosan nimellä tietokannasta"""
         cursor = self.connection.cursor()
         result = cursor.execute(
             "SELECT id FROM Bodyparts WHERE name=:name", {"name": name})
@@ -93,5 +100,6 @@ class BodypartRepository:
         return bodypart_id
 
     def delete_all(self):
+        """Poistaa kaiken datan bodyparts.csv-tiedostosta"""
         with open(bodypart_file, "w", encoding='utf-8') as file:  # pylint: disable=unused-variable
             pass

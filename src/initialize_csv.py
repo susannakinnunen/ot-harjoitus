@@ -3,6 +3,7 @@ from repositories.stretch_repository import StretchRepository
 
 
 class InitializeCSV():
+    """.csv-tiedostojen alustamisesta vastaava luokka"""
     def __init__(self, bodypart_name, stretch_name, stretch_instructions):
         self.bodypart_name = bodypart_name
         self.strech_name = stretch_name
@@ -13,11 +14,13 @@ class InitializeCSV():
         self.initialize_stretches_csv()
 
     def initialize_bodyparts_csv(self):
+        """Alustaa bodyparts.csv-tiedoston."""
         self.bodypart_repository.delete_all()
         self.bodypart_repository.write_bodyparts_to_file_and_database(
             self.bodypart_name, self.strech_name)
 
     def initialize_stretches_csv(self):
+        """Alustaa stretches.csv-tiedoston."""
         self.stretch_repository.delete_all()
         self.stretch_repository.write_stretches_to_file_and_database(
             self.strech_name, self.strech_instructions)

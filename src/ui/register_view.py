@@ -6,6 +6,7 @@ error_too_short = "Käyttäjätunnuksen ja salasanan minimipituus 3 merkkiä"
 
 
 class RegisterView:
+    """Luokka vastaa rekisteröitymisnäkymästä."""
     def __init__(self, root, handle_register_button, handle_register_button_admin):
         self._root = root
         self._handle_register_button = handle_register_button
@@ -20,6 +21,7 @@ class RegisterView:
         self._initialize()
 
     def destroy(self):
+        """Tuhoaa näkymän"""
         self._frame.destroy()
 
     def pack(self):

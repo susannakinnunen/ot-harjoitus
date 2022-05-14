@@ -14,6 +14,7 @@ class BodypartStretchRepository():
         self.stretch_repository = StretchRepository()
 
     def get_bodyparts_and_stretches_from_file(self):
+        """Hakee kehonosat ja venytykset bodyparts.csv-tiedostosta"""
         with open(bodypart_file, encoding='utf-8') as file:
             for row in file:
                 row = row.replace("\n", "")
@@ -27,6 +28,8 @@ class BodypartStretchRepository():
         return f"{bodypart} ja {stretch}"
 
     def add_combination(self, bodypart_name, stretch_name):
+        """Yhdistää tietokantaan venytyksen id:n ja siiheen
+         kuuluvan kehonosan id:n"""
 
         cursor = self.connection.cursor()
 

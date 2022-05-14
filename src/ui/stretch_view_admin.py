@@ -5,6 +5,7 @@ error = "Tapahtui virhe, kirjoita uudelleen."
 
 
 class StretchViewAdmin:
+    """Luokka vastaa adminin venytysohjeita tarjoavasta näkymästä."""
     def __init__(self, root, bodypart, handle_back_to_bodyparts_admin):
         self._root = root
         self.bodypart = bodypart

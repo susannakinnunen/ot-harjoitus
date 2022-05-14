@@ -3,6 +3,7 @@ from services.stretching_services import StretchingService
 
 
 class BodypartView:
+    """Näyttää kehonosat normaalikäyttäjälle."""
     def __init__(self, root, handle_bodypart_button, handle_logout):
         self._root = root
         self._handle_bodypart_button = handle_bodypart_button
@@ -69,6 +70,7 @@ class BodypartView:
         self._hide_error()
 
     def pack(self):
+        """Näyttää näkymän"""
         self._frame.pack(fill=constants.X)
 
     def _bodypart_handler(self):

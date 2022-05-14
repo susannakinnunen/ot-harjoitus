@@ -12,6 +12,7 @@ class UserRepository:
         self._connection = get_database_connection()
 
     def add_user(self, username, password, admin):
+        """Lisää käyttäjänimen, salasanan ja admin-arvon tietokantaan"""
         cursor = self._connection.cursor()
 
         if admin is True:
@@ -38,6 +39,7 @@ class UserRepository:
             return False
 
     def login(self, username, password):
+        """Kirjaa käyttäjän sisään, jos käytttäjätunnus on oikein ja olemassa."""
         user = self.find_by_username(username)
 
         if user is None or user[1] != password:
@@ -46,6 +48,7 @@ class UserRepository:
         return True
 
     def find_by_username(self, username):
+        """Etsii käyttäjän käyttäjänimen perusteella"""
         cursor = self._connection.cursor()
 
         cursor.execute(

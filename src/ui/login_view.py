@@ -5,6 +5,7 @@ error_login = "Väärä käyttäjätunnus tai salasana"
 
 
 class LoginView:
+    """Kirjautumisnäkymästä vastaava luokka"""
     def __init__(self, root, handle_login_button, handle_login_button_admin):
         self._root = root
         self._handle_login_button = handle_login_button

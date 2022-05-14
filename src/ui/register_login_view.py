@@ -2,6 +2,7 @@ from tkinter import ttk, StringVar, constants
 
 
 class RegisterLoginView:
+    """Luokka vastaa rekisteröitymis- ja kirjautumistoimintojen alustavasta näyttämisestä"""
     def __init__(self, root, handle_create_new_user_button, handle_login_button):
         self._root = root
         self._handle_create_new_user_button = handle_create_new_user_button
@@ -15,6 +16,7 @@ class RegisterLoginView:
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        """Tuhoaa näkymän"""
         self._frame.destroy()
 
     def _initialize(self):

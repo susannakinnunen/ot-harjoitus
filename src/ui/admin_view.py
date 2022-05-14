@@ -3,6 +3,7 @@ from services.stretching_services import StretchingService
 
 
 class AdminView:
+    """Luokka vastaa ylläpitäjän toimintojen näyttämisestä."""
     def __init__(self, root, handle_add_stretch):
         self._root = root
         self._frame = None
@@ -16,6 +17,7 @@ class AdminView:
         self._initialize()
 
     def pack(self):
+        """Näyttää näkymän"""
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
@@ -56,7 +58,7 @@ class AdminView:
         self._stretch_instructions_entry = ttk.Entry(master=self._frame)
 
         add_button = ttk.Button(
-            master=self._frame, text="Lisää", command=self.add_stretch_handler)
+            master=self._frame, text="Lisää", command=self._add_stretch_handler)
 
         heading_label.grid(padx=5, pady=5)
 
@@ -73,7 +75,7 @@ class AdminView:
 
         self._hide_error()
 
-    def add_stretch_handler(self):
+    def _add_stretch_handler(self):
         bodypart = self._bodypart_entry.get()
         stretch_name = self._stretch_name_entry.get()
         stretch_instructions = self._stretch_instructions_entry.get()

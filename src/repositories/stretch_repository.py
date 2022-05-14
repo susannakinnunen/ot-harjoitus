@@ -17,6 +17,8 @@ class StretchRepository():
         self.bodypart_repository = BodypartRepository()
 
     def get_stretches_from_file(self):
+        """Hakee venytysten nimet ja ohjeet stretches.csv-tiedostosta.
+        Vie venytykset tallennettavaksi add_stretch-metodille"""
         stretch_list = []
         with open(stretch_file, encoding='utf-8') as file:
             for row in file:
@@ -30,6 +32,7 @@ class StretchRepository():
         return stretch_list
 
     def add_stretch(self, name, description):
+        """Lisää venytykset ja niiden ohjeet tietokantaan"""
         cursor = self.connection.cursor()
         try:
             sql = "INSERT INTO Stretches (name, description) VALUES (:name, :description)"
@@ -42,6 +45,8 @@ class StretchRepository():
             return False
 
     def write_stretches_to_file_and_database(self, name, description):
+        """Lisää venytyksen stretches.csv-tiedostoon ja
+         ohjaa ne lisättäväksi tietokantaan"""
         try:
             self.add_stretch(name, description)
 
@@ -53,6 +58,7 @@ class StretchRepository():
             return False
 
     def find_all(self):
+        """Hakee kaikki venytykset tietokannasta"""
         cursor = self.connection.cursor()
 
         cursor.execute("SELECT * FROM Stretches")
@@ -62,6 +68,7 @@ class StretchRepository():
         return [(row["name"], row["description"]) for row in rows]
 
     def find_by_bodypart(self, bodypart):
+        """Hakee venytyksen nimen ja ohjeen kehonosan perusteella"""
         cursor = self.connection.cursor()
         stretch_list = []
         bodypart_id = self.bodypart_repository.get_bodypart_id(bodypart)
@@ -82,6 +89,7 @@ class StretchRepository():
         return stretch_list
 
     def get_stretch_id_by_id(self, bodypart_id):
+        """Hakee venytyksetn id:n kehonosa id:n perusteella."""
         cursor = self.connection.cursor()
         result = cursor.execute("SELECT stretch_id FROM BodypartStretches "
                                 "WHERE bodypart_id=:bodypart_id",{
@@ -92,6 +100,7 @@ class StretchRepository():
         return [stretch_id_result["stretch_id"] for stretch_id_result in stretch_id_results]
 
     def get_stretch_id_by_name(self, stretch_name):
+        """Hakee venytyksen id:n venytyksetn nimen perusteella"""
         cursor = self.connection.cursor()
 
         result = cursor.execute("SELECT id FROM Stretches WHERE name= :name",
@@ -104,5 +113,6 @@ class StretchRepository():
         return strech_id
 
     def delete_all(self):
+        """Poistaa kaikki stretches.csv-tiedostosta"""
         with open(stretch_file, "w", encoding='utf-8') as file:  # pylint: disable=unused-variable
             pass
