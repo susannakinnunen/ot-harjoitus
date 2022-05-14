@@ -15,6 +15,7 @@ Ylläpitäjä pystyy lisäämään kehonosia ja venyttelyohjeita. Voit koittaa y
 
 - [arkkitehtuuri.md](https://github.com/susannakinnunen/ot-harjoitus/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+- [Release viikko 7](https://github.com/susannakinnunen/ot-harjoitus/releases/tag/viikko7)
 
 
 
