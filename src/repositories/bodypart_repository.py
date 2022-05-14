@@ -19,7 +19,7 @@ class BodypartRepository:
         try:
             check = self.check_if_exists(name)
             if check is True:
-                return
+                return True
 
             cursor.execute(
                 "INSERT INTO Bodyparts (name) VALUES (:name)", {"name": name})
@@ -68,7 +68,8 @@ class BodypartRepository:
         return bodypart_list
 
     def write_bodyparts_to_file_and_database(self, bodypart, stretch):
-        """ Lisää kehonosan ja siihen kuuluvan venytyksen nimen bodyparts.csv-tiedostoon, kutsuu add_bodypart()-funktiota. """
+        """ Lisää kehonosan ja siihen kuuluvan venytyksen nimen
+        bodyparts.csv-tiedostoon, kutsuu add_bodypart()-funktiota. """
         try:
             self.add_bodypart(bodypart)
 

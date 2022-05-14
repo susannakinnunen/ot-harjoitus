@@ -2,9 +2,10 @@ from database_connection import get_database_connection
 from repositories.bodypart_repository import BodypartRepository
 from config import stretch_file
 
-# pylint disable rivillä 98,
+# pylint disable rivillä 106,
 # sillä funktio poistaa tiedostosta kaiken datan, ja tarvitsen tällaista toimintoa.
-# pylint disable myös "except"-kohdissa, en osannut vielä korjata niitä
+# pylint disable myös "except"-kohdissa, sillä tämä on ainoa tapa,
+# jolla osaan toteuttaa sql-toiminnot virhetilanteissa
 
 
 class StretchRepository():
@@ -36,8 +37,8 @@ class StretchRepository():
             cursor.execute(sql, {"name": name, "description": description})
 
             self.connection.commit()
-            return
-        except:
+            return True
+        except: # pylint: disable=bare-except
             return False
 
     def write_stretches_to_file_and_database(self, name, description):
@@ -82,7 +83,8 @@ class StretchRepository():
 
     def get_stretch_id_by_id(self, bodypart_id):
         cursor = self.connection.cursor()
-        result = cursor.execute("SELECT stretch_id FROM BodypartStretches WHERE bodypart_id=:bodypart_id", {
+        result = cursor.execute("SELECT stretch_id FROM BodypartStretches "
+                                "WHERE bodypart_id=:bodypart_id",{
                                 "bodypart_id": bodypart_id})
         stretch_id_results = result.fetchall()
         if stretch_id_results is None or stretch_id_results == []:

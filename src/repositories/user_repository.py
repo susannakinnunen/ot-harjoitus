@@ -1,5 +1,8 @@
 from database_connection import get_database_connection
 
+# pylint disable "except"-kohdissa, sillä tämä on ainoa tapa,
+# jolla osaan toteuttaa sql-toiminnot virhetilanteissa
+
 
 class UserRepository:
     """ Käyttäjiin liittyvistä operaatioista vastaava luokka.
@@ -11,10 +14,11 @@ class UserRepository:
     def add_user(self, username, password, admin):
         cursor = self._connection.cursor()
 
-        if admin == True:
+        if admin is True:
 
             cursor.execute(
-                "INSERT INTO Users (username,password, is_admin) VALUES (:username, :password, True)", {
+                "INSERT INTO Users (username,password, is_admin) VALUES "
+                "(:username, :password, True)", {
                     "username": username, "password": password})
 
             self._connection.commit()
@@ -23,13 +27,14 @@ class UserRepository:
 
         try:
             cursor.execute(
-                "INSERT INTO Users (username,password, is_admin) VALUES (:username, :password, False)", {
+                "INSERT INTO Users (username,password, is_admin) "
+                "VALUES (:username, :password, False)", {
                     "username": username, "password": password})
 
             self._connection.commit()
 
             return f"Lisätty käyttäjätunnus {username} ja salasana {password}"
-        except:
+        except: # pylint: disable=bare-except
             return False
 
     def login(self, username, password):

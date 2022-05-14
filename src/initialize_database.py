@@ -27,7 +27,8 @@ def create_tables(connection):
     cursor.execute(sql_bodyparts)
     connection.commit()
 
-    sql_stretches = "CREATE TABLE Stretches (id INTEGER PRIMARY KEY, name TEXT UNIQUE, description TEXT UNIQUE);"
+    sql_stretches = "CREATE TABLE Stretches (id INTEGER PRIMARY KEY," \
+                    "name TEXT UNIQUE, description TEXT UNIQUE);"
     cursor.execute(sql_stretches)
     connection.commit()
 
@@ -37,7 +38,8 @@ def create_tables(connection):
     cursor.execute(sql_bodypart_stretch)
     connection.commit()
 
-    sql_users = "CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT UNIQUE, password TEXT, is_admin BOOLEAN)"
+    sql_users = "CREATE TABLE Users (id INTEGER PRIMARY KEY, " \
+        "username TEXT UNIQUE, password TEXT, is_admin BOOLEAN)"
     cursor.execute(sql_users)
     connection.commit()
 
