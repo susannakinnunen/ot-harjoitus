@@ -18,3 +18,7 @@
 ## Viikko 6
 
 - ylläpitäjän ja normikäyttäjän erottelu
+
+## Viikko 7
+
+- graafisen käyttöliittymän koodaaminen
