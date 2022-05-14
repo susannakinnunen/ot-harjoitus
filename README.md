@@ -20,7 +20,7 @@ Ylläpitäjä pystyy lisäämään kehonosia ja venyttelyohjeita. Voit koittaa y
 - [Release viikko 7](https://github.com/susannakinnunen/ot-harjoitus/releases/tag/viikko7)
 
 ## Asennus
-1. Lataa zip-tiedosto kohdasta ' Release viikko 7'
+1. Lataa zip-tiedosto kohdasta ' Release viikko 7' tai Releases-otsikon alta kohdasta Viikon 7 Palautus
 2. Pura zip-tiedosto
 3. Siirry terminaalissa puretun tiedoston sisälle
 4. Asenna riippuvuudet komennolla:
