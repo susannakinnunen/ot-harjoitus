@@ -17,4 +17,7 @@
 | 9.5.  | 5    |  TkInterin opiskelua ja graafisen käyttöliittymän käyttöönottoa
 | 10.5. | 6    | Graafisen käyttöliittymän käyttöönottoa
 | 11.5  | 8    | Adminin toimintojen lisääminen graafiseen käyttöliittymään
-Yht.79,5h
+| 12.5. | 7    | Adminin toimintojen lisääminen graafiseen käyttöliittymään
+| 13.5  | 5    | Dokumentaation tekemistä ja koodin siistimistä
+| 14.5. | 2    | pylint-virheiden siistimistä, dokumentaatiota
+Yht.93,,5h
