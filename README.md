@@ -17,7 +17,7 @@ Ylläpitäjä pystyy lisäämään kehonosia ja venyttelyohjeita. Voit koittaa y
 
 - [release](https://github.com/susannakinnunen/ot-harjoitus/releases)
 
-- [Release viikko 7] (https://github.com/susannakinnunen/ot-harjoitus/releases/tag/viikko7)
+- [Release viikko 7](https://github.com/susannakinnunen/ot-harjoitus/releases/tag/viikko7)
 
 ## Asennus
 1. Lataa zip-tiedosto kohdasta ' Release viikko 7'
