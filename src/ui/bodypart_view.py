@@ -22,7 +22,6 @@ class BodypartView:
 
     def destroy(self):
         """"Tuhoaa näkymän."""
-        print("nyt tuhotaan bodypart")
         self._frame.destroy()
 
     def _show_error(self, message):

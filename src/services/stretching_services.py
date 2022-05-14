@@ -54,7 +54,7 @@ class StretchingService:
          käyttäjätunnusta ei voi luoda. Jos sitä ei voi luoda, palauttaa False."""
         admin = self.check_if_admin(username)
         user = self.user_repository.add_user(username, password, admin)
-        if not user:
+        if user is False:
             return False
         return True
 

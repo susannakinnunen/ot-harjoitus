@@ -16,16 +16,17 @@ class UserRepository:
         cursor = self._connection.cursor()
 
         if admin is True:
+            try:
+                cursor.execute(
+                    "INSERT INTO Users (username,password, is_admin) VALUES "
+                    "(:username, :password, True)", {
+                        "username": username, "password": password})
 
-            cursor.execute(
-                "INSERT INTO Users (username,password, is_admin) VALUES "
-                "(:username, :password, True)", {
-                    "username": username, "password": password})
+                self._connection.commit()
 
-            self._connection.commit()
-
-            return f"Lisätty käyttäjätunnus {username} ja salasana {password}"
-
+                return f"Lisätty käyttäjätunnus {username} ja salasana {password}"
+            except: # pylint: disable=bare-except
+                return False
         try:
             cursor.execute(
                 "INSERT INTO Users (username,password, is_admin) "

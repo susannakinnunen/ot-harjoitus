@@ -41,12 +41,15 @@ class RegisterView:
         if len(username) < 3 or len(password) < 3:
             self._show_error(error_too_short)
             return
-        self.stretching_service.create_new_user(username, password)
-        admin = self.stretching_service.check_if_admin(username)
-        if admin:
-            self._handle_register_button_admin()
+        user = self.stretching_service.create_new_user(username, password)
+        if user is True:
+            admin = self.stretching_service.check_if_admin(username)
+            if admin:
+                self._handle_register_button_admin()
+            else:
+                self._handle_register_button()
         else:
-            self._handle_register_button()
+            self._show_error(error_username)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
