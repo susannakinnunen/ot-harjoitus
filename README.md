@@ -15,9 +15,8 @@ Ylläpitäjä pystyy lisäämään kehonosia ja venyttelyohjeita. Voit koittaa y
 
 - [arkkitehtuuri.md](https://github.com/susannakinnunen/ot-harjoitus/blob/master/dokumentaatio/arkkitehtuuri.md)
 
-- [release](https://github.com/susannakinnunen/ot-harjoitus/releases)
 
-- [Release viikko 7](https://github.com/susannakinnunen/ot-harjoitus/releases/tag/viikko7)
+
 
 ## Asennus
 1. Lataa zip-tiedosto kohdasta ' Release viikko 7' tai Releases-otsikon alta kohdasta Viikon 7 Palautus
