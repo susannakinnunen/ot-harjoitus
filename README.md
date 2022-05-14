@@ -17,6 +17,16 @@ Ylläpitäjä pystyy lisäämään kehonosia ja venyttelyohjeita. Voit koittaa y
 
 - [release](https://github.com/susannakinnunen/ot-harjoitus/releases)
 
+## Asennus
+1. Asenna riippuvuudet komennolla:
+```
+poetry install
+```
+2. Käynnistä sovellus komennolla:
+```
+poetry run invoke start
+```
+
 ## Komentorivitoiminnot 
 
 **Ohjelman suorittaminen**
