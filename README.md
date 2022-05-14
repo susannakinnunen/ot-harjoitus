@@ -1,7 +1,9 @@
 # Venyttelysovellus
 
-Venyttelysovelluksen tarkoituksena on olla sovellus, josta voi etsiä kehonosakohtaisia venyttelyohjeita.
+Venyttelysovelluksessa käyttäjä voi etsiä kehonosakohtaisia venyttelyohjeita.
 Käyttäjän tulee ensin rekisteröityä ja kirjautua sisään, ennen kuin pääsee näkemään venyttelyohjeita.
+
+Ylläpitäjä pystyy lisäämään kehonosia ja venyttelyohjeita. Voit koittaa ylläpitäjän toimintoja luomalla "admin"-nimisen käyttäjätunnuksen.
 
 ## Dokumentaatio
 
