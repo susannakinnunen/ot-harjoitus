@@ -4,17 +4,21 @@ from initialize_database import initialize_database
 from initialize_csv import InitializeCSV
 
 
-initial_bodypart = "takareisi"
-initial_stretch = "eteenpäintaivutus"
-initial_stretch_intstructions = "Ota hieman lantiota leveämpi haaraasento. Pidä polvet rentoina.Hengitä sisään ja ulos hengityksellä lähde viemään ylävartaloa alas kohti jalkoja. Anna pään roikkua rentona. Koukista polvia niin paljon, että voit olla venytyksessä mahdollisimman rennosti."
+INITIAL_BODYPART = "takareisi"
+INITIAL_STRETCH = "eteenpäintaivutus"
+INITIAL_STRETCH_INSTRUCTIONS = """Ota hieman lantiota leveämpi haaraasento. \
+Pidä polvet rentoina.Hengitä sisään ja ulos hengityksellä \
+lähde viemään ylävartaloa alas kohti jalkoja. \
+Anna pään roikkua rentona. Koukista polvia niin \
+paljon, että voit olla venytyksessä mahdollisimman rennosti."""
 
 
 def main():
     initialize_database()
-    InitializeCSV(initial_bodypart, initial_stretch,initial_stretch_intstructions)
+    InitializeCSV(INITIAL_BODYPART, INITIAL_STRETCH,
+                  INITIAL_STRETCH_INSTRUCTIONS)
     window = Tk()
     window.title("Stretching application")
-
 
     ui_view = UI(window)
     ui_view.start()

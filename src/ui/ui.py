@@ -8,8 +8,9 @@ from ui.admin_view import AdminView
 from ui.login_view import LoginView
 from services.stretching_services import StretchingService
 
+
 class UI:
-    def __init__(self,root):     
+    def __init__(self, root):
         self._root = root
         self._current_view = None
         self.stretching_service = StretchingService()
@@ -19,13 +20,11 @@ class UI:
         """Käynnistää käyttöliittymän."""
         self._show_register_login_view()
 
-
     def _hide_current_view(self):
         if self._current_view != None:
             self._current_view.destroy()
 
         self._current_view = None
-
 
     def _show_register_login_view(self):
         self._hide_current_view()
@@ -38,42 +37,47 @@ class UI:
     def _show_register_view(self):
         self._hide_current_view()
 
-        self._current_view = RegisterView(self._root, self._show_bodypart_view, self._show_bodypart_view_admin)
-       
+        self._current_view = RegisterView(
+            self._root, self._show_bodypart_view, self._show_bodypart_view_admin)
+
         self._current_view.pack()
-    
+
     def _show_login_view(self):
         self._hide_current_view()
 
-        self._current_view = LoginView(self._root, self._show_bodypart_view, self._show_bodypart_view_admin)
+        self._current_view = LoginView(
+            self._root, self._show_bodypart_view, self._show_bodypart_view_admin)
 
         self._current_view.pack()
 
     def _show_bodypart_view(self):
         self._hide_current_view()
-        self._current_view = BodypartView(self._root, self._show_stretch_view,self._show_register_login_view)
+        self._current_view = BodypartView(
+            self._root, self._show_stretch_view, self._show_register_login_view)
         self._current_view.pack()
 
     def _show_bodypart_view_admin(self):
         self._hide_current_view()
-        self._current_view = BodypartViewAdmin(self._root,self._show_stretch_view_admin,self._show_admin_view, self._show_register_login_view) #lisää show_stretch_view_admin
+        self._current_view = BodypartViewAdmin(self._root, self._show_stretch_view_admin,
+                                               self._show_admin_view, self._show_register_login_view)  # lisää show_stretch_view_admin
         self._current_view.pack()
 
-    def _show_stretch_view_admin(self,bodypart):
+    def _show_stretch_view_admin(self, bodypart):
         self._hide_current_view()
-        self._current_view = StretchViewAdmin(self._root, bodypart,self._show_bodypart_view_admin)
+        self._current_view = StretchViewAdmin(
+            self._root, bodypart, self._show_bodypart_view_admin)
 
         self._current_view.pack()
 
-    def _show_stretch_view(self,bodypart):
+    def _show_stretch_view(self, bodypart):
         self._hide_current_view()
-        self._current_view = StretchViewAdmin(self._root, bodypart,self._show_bodypart_view)
+        self._current_view = StretchViewAdmin(
+            self._root, bodypart, self._show_bodypart_view)
 
         self._current_view.pack()
 
-   
     def _show_admin_view(self):
         self._hide_current_view()
-        self._current_view = AdminView(self._root, self._show_bodypart_view_admin)
+        self._current_view = AdminView(
+            self._root, self._show_bodypart_view_admin)
         self._current_view.pack()
-   

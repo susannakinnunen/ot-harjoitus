@@ -1,8 +1,9 @@
 from tkinter import ttk, StringVar, constants
 from services.stretching_services import StretchingService
 
+
 class BodypartView:
-    def __init__(self,root, handle_bodypart_button,handle_logout):
+    def __init__(self, root, handle_bodypart_button, handle_logout):
         self._root = root
         self._handle_bodypart_button = handle_bodypart_button
         self._handle_logout = handle_logout
@@ -14,8 +15,6 @@ class BodypartView:
         self._error_variable = None
         self._error_label = None
 
-    
-        
         self._stretching_service = StretchingService()
 
         self._initialize()
@@ -31,11 +30,10 @@ class BodypartView:
 
     def _hide_error(self):
         self._error_label.grid_remove()
-    
+
     def _initialize(self):
 
         self._frame = ttk.Frame(master=self._root)
-
 
         self._error_variable = StringVar(self._frame)
 
@@ -53,11 +51,14 @@ class BodypartView:
             bodypart_button = ttk.Label(master=self._frame, text=bodypart)
             bodypart_button.grid(padx=5, pady=5)
 
-        search_stretch_by_bodypart_label = ttk.Label(master=self._frame, text="Etsi venyttely kirjoittamalla listassa annettu kehonosa")
+        search_stretch_by_bodypart_label = ttk.Label(
+            master=self._frame, text="Etsi venyttely kirjoittamalla listassa annettu kehonosa")
         self._search_stretch_by_bodypart_entry = ttk.Entry(master=self._frame)
-        search_stretch_by_bodypart_button = ttk.Button(master=self._frame, text="Etsi",command=self._bodypart_handler)
+        search_stretch_by_bodypart_button = ttk.Button(
+            master=self._frame, text="Etsi", command=self._bodypart_handler)
 
-        logout_button = ttk.Button(master=self._frame, text="Kirjaudu ulos", command=self._handle_logout)
+        logout_button = ttk.Button(
+            master=self._frame, text="Kirjaudu ulos", command=self._handle_logout)
 
         search_stretch_by_bodypart_label.grid(padx=5, pady=5)
         self._search_stretch_by_bodypart_entry.grid(padx=5, pady=5)

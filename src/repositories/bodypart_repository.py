@@ -76,7 +76,6 @@ class BodypartRepository:
                 file.write(bodypart+";"+stretch+"\n")
             return f"Lisätty kehonosa ja venytys: {bodypart} ja {stretch}"
 
-
         except:  # pylint: disable=bare-except
             return False
 
