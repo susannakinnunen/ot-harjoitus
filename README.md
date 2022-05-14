@@ -18,11 +18,14 @@ Ylläpitäjä pystyy lisäämään kehonosia ja venyttelyohjeita. Voit koittaa y
 - [release](https://github.com/susannakinnunen/ot-harjoitus/releases)
 
 ## Asennus
-1. Asenna riippuvuudet komennolla:
+1. Lataa zip-tiedosto kohdasta ' Release viikko 7'
+2. Pura zip-tiedosto
+3. Siirry terminaalissa puretun tiedoston sisälle
+4. Asenna riippuvuudet komennolla:
 ```
 poetry install
 ```
-2. Käynnistä sovellus komennolla:
+5. Käynnistä sovellus komennolla:
 ```
 poetry run invoke start
 ```
