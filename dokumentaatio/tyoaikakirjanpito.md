@@ -20,4 +20,4 @@
 | 12.5. | 7    | Adminin toimintojen lisääminen graafiseen käyttöliittymään
 | 13.5  | 5    | Dokumentaation tekemistä ja koodin siistimistä
 | 14.5. | 2    | pylint-virheiden siistimistä, dokumentaatiota
-Yht.93,,5h
+Yht.93,5h
